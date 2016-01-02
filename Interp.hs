@@ -40,8 +40,8 @@ sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
       middlePC = self + length firstSeq
   in firstSeq ++ t2 middlePC finalCont)
 
-loop_forever :: StateSeq -> [(PC, Transition)]
-loop_forever (initial, trans) = trans 0 (0, initial)
+loop_forever :: StateSeq -> StateSeq
+loop_forever (initial, trans) = (initial, \self cont -> trans self (self, initial))
 
 --stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 stateNames = map show [0..]
