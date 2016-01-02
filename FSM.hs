@@ -27,6 +27,15 @@ instance Num Bit where
   signum = undefined
   negate = undefined
 
+instance Num a => Num (Signal a) where
+  fromInteger = immediate
+
+  (+) = undefined
+  (*) = undefined
+  abs = undefined
+  signum = undefined
+  negate = undefined
+
 cmd :: Vec 4 Bit
 cmd = 0 :> 0 :> 1 :> 1 :> Nil
 
