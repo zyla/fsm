@@ -31,7 +31,7 @@ instance Num Expr where
 stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 
 dac =
-  [ 0 .: output (Const 0) 0 (1, (Const 0))
+  [ 0 .: output 0 0 (1, 0)
   , 1 .: repeat_upto (Const 3)
            (\index self cont -> Final (Index (NC "cmd") index) cont)
            1 -- self
@@ -40,7 +40,7 @@ dac =
            (\index self cont -> Final (Index Input index) cont)
            2 -- self
            (3, Const 0) -- cont
-  , 3 .: Final (Const 17) (1, (Const 0)) -- (Const 0) comes from 1
+  , 3 .: Final (Const 17) (1, X) -- (Const 0) comes from 1
   ]
 
 dac_prog =
