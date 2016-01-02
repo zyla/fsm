@@ -56,8 +56,8 @@ v = immediate
 (!!) = undefined
 
 repeat :: Int -> (Signal Int -> Seq) -> Seq
-repeat n act = do
-  eq <- 
+repeat n act = withRegister $ \x ->
+  eq <- x ==. v n
 
 dac :: Signal (Vec 12 Bit) -> Seq
 dac input = do
