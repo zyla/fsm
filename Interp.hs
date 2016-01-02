@@ -30,6 +30,7 @@ instance Num Expr where
 
 type SD = (Expr, PC -> (PC, Expr) -> Transition)
 type StateSeq = (Expr, PC -> (PC, Expr) -> [(PC, Transition)])
+type Seq = StateSeq
 
 one :: SD -> StateSeq
 one (initial, trans) = (initial, \self cont -> [(self, trans self cont)])
