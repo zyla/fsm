@@ -68,6 +68,6 @@ render transitions = header ++ concatMap trans (M.toList transitions) ++ footer
   where
     header = "digraph { rankdir=LR; size=\"8,5\"; node [shape=circle]; "
     footer = "}"
-    trans (k, vs) = concatMap (\v -> show k ++ "->" ++ show v ++ "; ") vs
+    trans (k, Output rv pc) = concatMap (\v -> show k ++ "->" ++ show v ++ "; ") vs
 
 main = writeFile "/tmp/fsm.gv" $ render $ compile prog
