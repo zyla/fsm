@@ -28,7 +28,7 @@ instance Num Bit where
   negate = undefined
 
 instance Num a => Num (Signal a) where
-  fromInteger = immediate
+  fromInteger = immediate . fromInteger
 
   (+) = undefined
   (*) = undefined
