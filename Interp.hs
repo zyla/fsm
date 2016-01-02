@@ -39,7 +39,7 @@ dac = M.fromList
   ]
 
 dac_prog =
-  [ Const 0 ==> output (Const 0)
+  [ 0 ==> output 0
 
 compile :: [(Expr, PC -> (PC, Expr) -> Transition)] -> [(PC, Transition)]
 compile prog =
