@@ -16,7 +16,7 @@ data Expr a where
   PC :: Expr PC
   Input :: Expr Input
   Add :: Expr a -> Expr a -> Expr a
-  NC :: Expr a
+  X :: Expr a
 
   If :: Cond -> Expr a -> Expr a -> Expr a
 
@@ -53,3 +53,7 @@ compileSwitch initialRegval initialPC ((pc, (output, cont)):xs) =
       switch = If (Eq PC (Const pc))
       (_, _, output', cont') = compileSwitch initialRegval initialPC xs
   in (initialRegval, initialPC, switch output output', switch cont cont')
+
+
+output :: Expr Output -> Seq
+output out = (X, \self cont -> [(out, cont)])
