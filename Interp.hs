@@ -72,5 +72,6 @@ render transitions = header ++ concatMap trans (M.toList transitions) ++ footer
     trans (k, If cond l Nothing) = trans (k, If cond l (Just $ Output RegVal (k + 1)))
 
 showExpr RegVal = "R"
+showExpr (Increment x) = showExpr x ++ "+1"
 
 main = writeFile "/tmp/fsm.gv" $ render $ compile prog
