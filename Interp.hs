@@ -38,9 +38,9 @@ transition next = do
 
 goto target = transition $ Output RegVal target
 
-appendT Nothing next = next
-appendT (Just (If cond l r)) next = If cond l (appendT r next)
-appendT (Just x) _ = x
+appendT next Nothing = next
+appendT next (Just (If cond l r)) = If cond l (appendT r next)
+appendT _    (Just x) = x
 
 
 prog = endlessly $ do
