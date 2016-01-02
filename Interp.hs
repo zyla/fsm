@@ -43,4 +43,7 @@ showExpr (Const x) = show x
 showExpr RegVal = "R"
 showExpr (Incr x) = showExpr x ++ "+1"
 
+showCond (Not c) = "~(" ++ showCond c ++ ")"
+showCond (Eq e1 e2) = showExpr e1 ++ "=" ++ showExpr e2
+
 main = writeFile "/tmp/fsm.gv" $ render dac
