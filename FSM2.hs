@@ -19,7 +19,7 @@ data Expr a where
 
   If :: Expr Bool -> Expr a -> Expr a -> Expr a
 
-
-type Machine = (Expr RegVal, Expr Output, Expr (PC, RegVal))
+type Cont = Expr (PC, RegVal)
+type Machine = (Expr RegVal, Expr Output, Cont)
 
 type Seq = (Expr RegVal, PC -> Cont -> [Transition])
