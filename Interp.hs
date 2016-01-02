@@ -49,4 +49,4 @@ render transitions = header ++ concatMap trans (M.toList transitions) ++ footer
     footer = "}"
     trans (k, vs) = concatMap (\v -> show k ++ "->" ++ show v ++ "; ") vs
 
-main = writeFile "/tmp/fsm.gv" $ render $ compile pro
+main = writeFile "/tmp/fsm.gv" $ render $ compile prog
