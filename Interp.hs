@@ -38,8 +38,8 @@ transition next = do
 
 goto target = transition $ Output RegVal target
 
-appendT Nothing next = next
-appendT (Just 
+appendT Nothing next = Just next
+appendT (Just (Output _ _)) = 
 
 
 prog = endlessly $ do
