@@ -18,7 +18,7 @@ nextState :: Seq PC
 nextState = do
   m <- get
   let pc = mCurrentPC m + 1
-  put $ m { mCurrentPC = pc + 1 }
+  put $ m { mCurrentPC = pc }
   return pc
 
 goto :: PC -> Seq ()
