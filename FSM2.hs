@@ -31,7 +31,7 @@ instance (Num a, Show a) => Num (Expr a) where
 
 
 type Cont = Expr (PC, RegVal)
-type Machine = (Expr RegVal, Expr PC, Expr Output, Cont)
+type Machine = (Expr RegVal, PC, Expr Output, Cont)
 
 type Seq = (Expr RegVal, PC -> Cont -> [(Expr Output, Cont)])
 
@@ -48,7 +48,7 @@ instantiate :: Seq -> (Expr RegVal, PC, [(PC, (Expr Output, Cont))])
 instantiate (initial, m) = (initial, 0, zip [0..] (m 0 (Tuple 0 initial)))
 
 
-compileSwitch :: Expr RegVal -> Expr PC -> [(PC, (Expr Output, Cont))] -> Machine
+compileSwitch :: Expr RegVal -> PC -> [(PC, (Expr Output, Cont))] -> Machine
 compileSwitch initialRegval initialPC ((pc, (output, cont)):xs) =
   let switch = If (Eq PC (Const pc))
       (_, _, output', cont') = compileSwitch initialRegval initialPC xs
