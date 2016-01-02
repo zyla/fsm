@@ -35,6 +35,9 @@ dac = M.fromList
   ]
 
 compile :: [(Expr, PC -> (PC, Expr) -> Transition)] -> [(PC, Transition)]
+compile prog =
+  let mapping = M.fromList $ zipWith (\index tr -> (index, tr index)) [0..] prog
+  in _
 
 output :: Expr -> PC -> (PC, Expr) -> Transition
 output out self cont = Final out cont
