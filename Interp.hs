@@ -36,7 +36,7 @@ one (initial, trans) = (initial, \self cont -> [(self, trans self cont)])
 
 sequence :: StateSeq -> StateSeq -> StateSeq
 sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
-  let firstSeq = t1 self _ in
+  let firstSeq = t1 self (middlePC, contVal) in
       middlePC = self + length firstSeq
   firstSeq ++ t2 middlePC _)
 
