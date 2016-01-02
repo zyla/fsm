@@ -36,6 +36,7 @@ unbits :: Signal (Vec n Bit) -> Signal Int
 unbits = undefined
 
 (==.) :: Signal a -> Signal a -> Seq Bool
+(==.) = undefined
 
 data Seq' a deriving (Functor)
 type Seq = Seq' ()
