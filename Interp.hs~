@@ -19,11 +19,6 @@ type Seq = State Machine
 
 instance Num Expr where
   fromInteger = Const . fromInteger
-  (+) = undefined
-  (*) = undefined
-  abs = undefined
-  signum = undefined
-  negate = undefined
 
 (.:) = (,)
 (==>) = (,)
