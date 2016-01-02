@@ -100,5 +100,5 @@ showCond (Not c) = "~(" ++ showCond c ++ ")"
 showCond (Eq e1 e2) = showExpr e1 ++ "=" ++ showExpr e2
 
 main = writeFile "/tmp/fsm.gv" $
-   -- render (compile dac_prog)
-    render dac
+    render (compile dac_prog)
+   -- render dac
