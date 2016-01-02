@@ -1,4 +1,4 @@
-{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DataKinds, TypeOperators #-}
 module FSM where
 
 import GHC.TypeLits
