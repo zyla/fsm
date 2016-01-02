@@ -10,7 +10,7 @@ type PC = Int
 
 type RegVal = Int
 data Cond = Not Cond | Eq Expr Expr deriving (Show)
-data Expr = NC String | Index Expr Expr | Const RegVal | RegVal | Input | Incr Expr deriving (Show)
+data Expr = NC String | Index Expr Expr | Const RegVal | RegVal | Input | Incr Expr, X deriving (Show)
 data Transition = Final Expr (PC, Expr) | If Cond Transition Transition deriving (Show)
 
 type Machine = M.Map PC Transition
