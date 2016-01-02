@@ -1,6 +1,7 @@
 {-# LANGUAGE DataKinds, TypeOperators, GADTs, DeriveFunctor #-}
 module FSM where
 
+import Control.Monad (ao)
 import Prelude hiding (repeat, (!!))
 
 import GHC.TypeLits
