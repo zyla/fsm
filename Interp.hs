@@ -8,6 +8,7 @@ import Control.Monad.State
 
 type PC = Int
 
+type RegVal = Int
 data Cond = RegEqual RegVal
 data Transition = Output RegVal PC | If Cond Transition Transition
 
