@@ -43,14 +43,14 @@ dac =
   , 3 .: Final (Const 17) (1, X) -- (Const 0) comes from 1
   ]
 
-dac_prog =
-  [ X ==> output 0
-  ] ++ repeat_upto' 3 (\index -> output (Index (NC "cmd") index))
-  , 0 ==> repeat_upto 3 (\index -> output (Index Input index))
-  , X ==> output 17
+dac_prog = concat
+  [ output' 0
+  , repeat_upto' 3 (\index -> output' (Index (NC "cmd") index))
+  , repeat_upto' 3 (\index -> output' (Index Input index))
+  , output' 17
   ]
 
-output' x = X ==> output x
+output' x = [X ==> output x]
 
 type SD = (Expr, PC -> (PC, Expr) -> Transition)
 
