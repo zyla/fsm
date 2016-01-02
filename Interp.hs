@@ -18,6 +18,7 @@ type Machine = M.Map PC Transition
 type Seq = State Machine
 
 (.:) = (,)
+(=>) = (,)
 
 stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 
@@ -33,6 +34,9 @@ dac = M.fromList
            (3, Const 0) -- cont
   , 3 .: Final (Const 0) (1, (Const 0)) -- (Const 0) comes from 1
   ]
+
+dac_prog =
+  [ 
 
 compile :: [(Expr, PC -> (PC, Expr) -> Transition)] -> [(PC, Transition)]
 compile prog =
