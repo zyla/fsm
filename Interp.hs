@@ -46,7 +46,7 @@ dac =
 dac_prog = concat
   [ output' 0
   , repeat_upto' 3 (\index -> output' (Index (NC "cmd") index))
-  , repeat_upto' 3 (\index -> output' (Index Input index))
+  , repeat_upto' 11 (\index -> output' (Index Input index))
   , output' 17
   ]
 
