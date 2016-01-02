@@ -14,4 +14,4 @@ instance Monad Seq where
 
 
 nextState :: Seq PC
-nextState 
+nextState = undefined
