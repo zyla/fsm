@@ -43,7 +43,7 @@ immediate = undefined
 (!!) = undefined
 
 repeat :: Int -> (Signal Int -> Seq) -> Seq
-repeat = undefined
+repeat n act = undefined
 
 dac :: Signal (Vec 12 Bit) -> Seq
 dac input = do
