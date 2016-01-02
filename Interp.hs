@@ -34,8 +34,12 @@ clock = do
 transition :: Transition -> Seq ()
 transition next = do
   Machine pc transitions <- get
-  put (Machine pc (M.alter pc [next] transitions))
+  put (Machine pc (M.alter (appendT next) pc transitions))
 
+goto target = transition $ Output RegVal target
+
+appendT Nothing next = next
+appendT (Just 
 
 
 prog = endlessly $ do
