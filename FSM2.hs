@@ -22,5 +22,4 @@ data Expr a where
 
 type Machine = (Expr RegVal, Expr Output, Expr (PC, RegVal))
 
-type S = (Expr RegVal, PC -> (PC, Expr) -> Transition)
-type Seq = (Expr, PC -> (PC, Expr) -> [(PC, Transition)])
+type Seq = (Expr RegVal, PC -> Cont -> [Transition])
