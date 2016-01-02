@@ -2,6 +2,7 @@
 
 import Control.Monad (ap)
 import qualified Data.Map as M
+import Control.Monad.State
 
 type PC = Int
 
