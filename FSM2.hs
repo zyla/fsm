@@ -45,3 +45,6 @@ loop_forever (initial, trans) = (initial, \self cont -> trans self (Tuple (Const
 
 instantiate :: Seq -> (Expr RegVal, PC, [(PC, Machine)])
 instantiate (initial, m) = (initial, 0, zip [0..] (m 0 (Tuple 0 initial)))
+
+
+compile :: (Expr RegVal, PC, [(PC, Machine)]) -> (Expr RegVal, PC, Machine)
