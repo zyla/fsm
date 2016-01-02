@@ -17,8 +17,8 @@ compile seq = execState seq (Machine 0 M.empty)
 curState :: Seq PC
 curState = gets mCurrentPC
 
-nextState :: Seq ()
-nextState = do
+clock :: Seq ()
+clock = do
   m <- get
   let pc = mCurrentPC m + 1
   put $ m { mCurrentPC = pc }
