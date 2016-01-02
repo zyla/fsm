@@ -35,8 +35,8 @@ one :: SD -> StateSeq
 one (initial, trans) = (initial, \self cont -> [(self, trans self cont)])
 
 sequence :: StateSeq -> StateSeq -> StateSeq
-sequence (initial, t1) (contVal, t2) = (initial, \self cont ->
-  _)
+sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
+  t1 self _)
 
 --stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 stateNames = map show [0..]
