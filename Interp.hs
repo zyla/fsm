@@ -50,7 +50,9 @@ dac_prog =
   , X ==> output 17
   ]
 
-compile :: [(Expr, PC -> (PC, Expr) -> Transition)] -> [(PC, Transition)]
+type SD = (Expr, PC -> (PC, Expr) -> Transition)
+
+compile :: [SD] -> [(PC, Transition)]
 compile prog =
   let concreteStates = zipWith (\index (initial, tr) -> ((index, initial), tr index)) [0..] prog
   in cycleZipWith (\((index, _), tr) (cont, _) -> (index, tr cont)) concreteStates
