@@ -1,6 +1,8 @@
 {-# LANGUAGE DataKinds, TypeOperators #-}
 module FSM where
 
+import Prelude hiding (repeat)
+
 import GHC.TypeLits
 
 data Vec :: Nat -> * -> * where
