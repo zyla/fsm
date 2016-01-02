@@ -22,7 +22,7 @@ data Expr a where
 type Cont = Expr (PC, RegVal)
 type Machine = (Expr RegVal, Expr Output, Cont)
 
-type Seq = (Expr RegVal, PC -> Cont -> [Transition])
+type Seq = (Expr RegVal, PC -> Cont -> [Machine])
 
 sequence :: Seq -> Seq -> Seq
 sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
