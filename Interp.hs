@@ -72,8 +72,8 @@ repeat_upto max act self cont =
    (act RegVal self (self, (Incr RegVal)))
 
 
-render :: Machine -> String
-render transitions = header ++ concatMap (trans "") (M.toList transitions) ++ footer
+render :: [(PC, Transition)] -> String
+render transitions = header ++ concatMap (trans "") transitions ++ footer
   where
     header = "digraph { rankdir=LR; size=\"8,5\"; node [shape=circle]; "
     trans conds (k, Final output (pc, rv)) =
