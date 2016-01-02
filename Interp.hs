@@ -24,7 +24,7 @@ dac = M.fromList
   , 1 .: If (Eq RegVal (Const 3))
            (Output (Const 0) 2)
            (Output (Incr RegVal) 1)
-  , 2 .: If (RegEqual 11)
+  , 2 .: If (Eq RegVal (Const 11))
            (Output (Const 0) 3)
            (Output (Incr RegVal) 2)
   , 3 .: Output RegVal 0
