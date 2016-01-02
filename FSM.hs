@@ -5,7 +5,7 @@ import GHC.TypeLits
 
 data Vec :: Nat -> * -> * where
   Nil :: Vec 0 a
-  (:>) :: a -> Vec n a ->
+  (:>) :: a -> Vec n a -> Vec (n + 1) a
 
 cmd = 0 :> 0 :> 1 :> 1 :> Nil
 
