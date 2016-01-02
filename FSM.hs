@@ -48,6 +48,5 @@ repeat = undefined
 dac :: Signal (Vec 12 Bit) -> Seq
 dac input = do
   repeat 4 $ \index -> output (0,1,0,cmd !! index)
-  repeat 12 $ \index -> do
-    output (0,1,0,input !! index)
+  repeat 12 $ \index -> output (0,1,0,input !! index)
   output (0,1,1,0)
