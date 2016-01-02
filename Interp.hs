@@ -40,6 +40,10 @@ prog = do
   clock -- 5
   goto begin
 
+repeat n act = do
+  loop <- curState
+  act
+  goto loop
 
 render :: Transitions -> String
 render transitions = header ++ concatMap trans (M.toList transitions) ++ footer
