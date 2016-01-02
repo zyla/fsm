@@ -7,6 +7,8 @@ data Vec :: Nat -> * -> * where
   Nil :: Vec 0 a
   (:>) :: a -> Vec n a -> Vec (n + 1) a
 
+data Signal a
+
 cmd = 0 :> 0 :> 1 :> 1 :> Nil
 
 dac :: Signal (Vec 12 Bit) -> Seq
