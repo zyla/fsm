@@ -44,7 +44,7 @@ cycleZipWith _ [] = []
 cycleZipWith f (hd:xs) = go (hd:xs)
   where
     go (x:y:xs) = f x y : go (y:xs)
-    go [x] = f x hd
+    go [x] = [f x hd]
 
 output :: Expr -> PC -> (PC, Expr) -> Transition
 output out self cont = Final out cont
