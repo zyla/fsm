@@ -27,9 +27,10 @@ dac = M.fromList
            (\index cont -> Final (Index (NC "cmd") index) cont)
            1 -- self
            (2, Const 0) -- cont
-  , 2 .: If (Eq RegVal (Const 11))
-           (Final (Index Input RegVal) (3, (Const 0))) -- (Const 0) comes from 3)
-           (Final (Index Input RegVal) (2, (Incr RegVal)))
+  , 2 .: repeat_upto (Const 11)
+           (\index cont -> Final (Index Input index) cont)
+           2 -- self
+           (3, Const 0) -- cont
   , 3 .: Final (Const 0) (1, (Const 0)) -- (Const 0) comes from 1
   ]
 
