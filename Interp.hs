@@ -28,7 +28,6 @@ curState = gets mCurrentPC
 clock :: Seq ()
 clock = do
   pc <- gets mCurrentPC
-  goto (pc + 1)
   modify $ \m -> m { mCurrentPC = mCurrentPC m + 1 }
 
 transition :: Transition -> Seq ()
