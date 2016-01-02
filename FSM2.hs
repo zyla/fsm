@@ -2,6 +2,7 @@
 
 type PC = Int
 type RegVal = Int
+type Input = Int
 
 data Cond = Not Cond | forall a. Eq (Expr a) (Expr a) deriving (Show)
 data Expr a where
