@@ -38,6 +38,7 @@ prog = do
   clock; clock
   goto loop
   goto begin
+  goto begin
   clock -- 5
   goto begin
 
