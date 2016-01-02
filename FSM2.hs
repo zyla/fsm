@@ -20,7 +20,7 @@ data Expr a where
   If :: Expr Bool -> Expr a -> Expr a -> Expr a
 
 
-instance Num a => Num (Expr a) where
+instance (Num a, Show a) => Num (Expr a) where
   fromInteger = Const . fromInteger
   (+) = undefined
   (*) = undefined
