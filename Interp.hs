@@ -17,8 +17,8 @@ compile seq = execState seq (Machine 0 M.empty)
 nextState :: Seq PC
 nextState = do
   m <- get
-  let pc = mNextPC m
-  put $ m { mNextPC = pc + 1 }
+  let pc = mCurrentPC m
+  put $ m { mCurrentPC = pc + 1 }
   return pc
 
 goto :: PC -> Seq ()
