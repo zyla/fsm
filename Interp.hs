@@ -37,8 +37,10 @@ render :: Machine -> String
 render transitions = header ++ concatMap (trans "") (M.toList transitions) ++ footer
   where
     header = "digraph { rankdir=LR; size=\"8,5\"; node [shape=circle]; "
-    trans conds (k, Next rv pc) =
-      showPC k ++ "->" ++ showPC pc ++ " [label=\"" ++ conds ++ "R<-" ++ showExpr rv ++ "\"]; "
+    trans conds (k, Next output rv pc) =
+      showPC k ++ "->" ++ showPC pc ++ " [label=\"" ++ conds ++
+        "^" ++ showExpr output ++ " " ++
+        "R<-" ++ showExpr rv ++ "\"]; "
     trans conds (k, If cond l r) =
       let cstr = conds ++ showCond cond ++ " => "
       in trans cstr (k, l) ++ trans conds (k, r)
