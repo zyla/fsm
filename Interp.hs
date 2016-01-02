@@ -11,7 +11,7 @@ type PC = Int
 type RegVal = Int
 data Cond = RegEqual RegVal
 data Expr = RegVal | Incr Expr
-data Transition = Output Expr PC | If Cond Transition Transition
+data Transition = Output Expr PC | If Cond Transition Transition deriving (Show)
 
 type Transitions = M.Map PC Transition
 data Machine = Machine { mCurrentPC :: PC, mTransitions :: Transitions } deriving (Show)
