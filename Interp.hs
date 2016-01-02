@@ -11,7 +11,7 @@ type PC = Int
 type RegVal = Int
 data Cond = Not Cond | Eq Expr Expr deriving (Show)
 data Expr = NC String | Index Expr Expr | Const RegVal | RegVal | Input | Incr Expr deriving (Show)
-data Transition = Final Expr Expr PC | If Cond Transition Transition deriving (Show)
+data Transition = Final Expr (PC, Expr) | If Cond Transition Transition deriving (Show)
 
 type Machine = M.Map PC Transition
 
@@ -24,7 +24,7 @@ stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 dac = M.fromList
   [ 0 .: Final (Const 0) (Const 0) 1
   , 1 .: If (Eq RegVal (Const 3))
-           (Final (Index (NC "cmd") RegVal) (Const 0) 2) -- (Const 0) comes from 2
+           (Final (Index (NC "cmd") RegVal) (2, (Const 0))) -- (Const 0) comes from 2
            (Final (Index (NC "cmd") RegVal) (Incr RegVal) 1)
   , 2 .: If (Eq RegVal (Const 11))
            (Final (Index Input RegVal) (Const 0) 3) -- (Const 0) comes from 3)
