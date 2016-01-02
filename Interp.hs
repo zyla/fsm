@@ -45,10 +45,12 @@ dac =
 
 dac_prog =
   [ X ==> output 0
-  , 0 ==> repeat_upto 3 (\index -> output (Index (NC "cmd") index))
+  ] ++ repeat_upto' 3 (\index -> output (Index (NC "cmd") index))
   , 0 ==> repeat_upto 3 (\index -> output (Index Input index))
   , X ==> output 17
   ]
+
+output' x = X ==> output x
 
 type SD = (Expr, PC -> (PC, Expr) -> Transition)
 
