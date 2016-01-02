@@ -24,12 +24,12 @@ stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 dac = M.fromList
   [ 0 .: Output (Const 0) 1
   , 1 .: If (Eq RegVal (Const 3))
-           (Output (Const 0) 2)
+           (Output (Const 0) 2) -- (Const 0) comes from 2
            (Output (Incr RegVal) 1)
   , 2 .: If (Eq RegVal (Const 11))
-           (Output (Const 0) 3)
+           (Output (Const 0) 3) -- (Const 0) comes from 3)
            (Output (Incr RegVal) 2)
-  , 3 .: Output (Const 0) 1
+  , 3 .: Output (Const 0) 1 -- (Const 0) comes from 1
   ]
 
 
