@@ -19,6 +19,15 @@ data Expr a where
 
   If :: Expr Bool -> Expr a -> Expr a -> Expr a
 
+
+instance Num a => Num (Expr a) where
+  fromInteger = Const . fromInteger
+  (+) = undefined
+  (*) = undefined
+  abs = undefined
+  signum = undefined
+  negate = undefined
+
 type Cont = Expr (PC, RegVal)
 type Machine = (Expr RegVal, Expr Output, Cont)
 
