@@ -9,7 +9,6 @@ import Control.Monad.State
 type PC = Int
 
 type RegVal = Int
-type Output = (Int, Int, Int, Int)
 data Cond = Not Cond | Eq Expr Expr deriving (Show)
 data Expr = Const RegVal | RegVal | Incr Expr deriving (Show)
 data Transition = Next Expr PC | If Cond Transition Transition deriving (Show)
