@@ -57,3 +57,7 @@ compileSwitch initialRegval initialPC ((pc, (output, cont)):xs) =
 
 output :: Expr Output -> Seq
 output out = (X, \self cont -> [(out, cont)])
+
+loop_from_to :: RegVal -> RegVal -> (Expr RegVal -> Seq) -> Seq
+loop_from_to from to (_, act) =
+  _
