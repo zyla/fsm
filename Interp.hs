@@ -32,7 +32,7 @@ goto next = do
   put (Machine pc (M.insertWith (++) pc [next] transitions))
 
 
-prog = forever $ do
+prog = endlessly $ do
   repeat 4 outputCommand
   repeat 12 outputCommand
   sync
