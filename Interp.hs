@@ -10,7 +10,7 @@ type PC = Int
 
 type RegVal = Int
 data Cond = Not Cond | RegEqual RegVal deriving (Show)
-data Expr = RegVal | Incr Expr deriving (Show)
+data Expr = Const RegVal | RegVal | Incr Expr deriving (Show)
 data Transition = Output Expr PC | If Cond Transition Transition deriving (Show)
 
 type Machine = M.Map PC Transition
@@ -19,7 +19,7 @@ type Seq = State Machine
 
 
 dac = M.fromList
-  [ 0, 
+  [ 0, Output 
 
 
 render :: Transitions -> String
