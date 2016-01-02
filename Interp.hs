@@ -28,10 +28,10 @@ goto next = do
 
 
 prog = do
-  begin <- nextState
-  nextState
-  loop <- nextState
-  nextState
+  begin <- nextState -- 1
+  nextState -- 2
+  loop <- nextState -- 3
+  nextState -- 4
   goto loop
-  nextState
+  nextState -- 5
   goto begin
