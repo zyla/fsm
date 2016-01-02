@@ -6,7 +6,7 @@ import Control.Monad.State
 
 type PC = Int
 
-type Machine = M.Map PC PC
+data Machine = Machine { mCurrentPC :: PC, mTransitions :: M.Map PC PC }
 
 type Seq = State Machine
 
@@ -18,4 +18,5 @@ nextState = do
   return pc
 
 goto :: PC -> Seq ()
-goto pc = Seq $ \_ -> ((), pc)
+goto next = do
+  pc <- get
