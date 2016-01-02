@@ -45,7 +45,7 @@ dac = M.fromList
 
 dac_prog =
   [ 0 ==> output 0
-  , repeat_upto 3 $ \index -> output (Index (NC "cmd") index)
+  , 0 ==> repeat_upto 3 $ \index -> output (Index (NC "cmd") index)
   ]
 
 compile :: [(Expr, PC -> (PC, Expr) -> Transition)] -> [(PC, Transition)]
