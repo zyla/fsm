@@ -52,4 +52,4 @@ compileSwitch :: Expr RegVal -> Expr PC -> [(PC, (Expr Output, Cont))] -> Machin
 compileSwitch initialRegval initialPC ((pc, (output, cont)):xs) =
   let switch = If (Eq PC (Const pc))
       (_, _, output', cont') = compileSwitch initialRegval initialPC xs
-  in (initialRegval, initialPC, switch output output', switch cont cont')
+  in (initialRegval, Const initialPC, switch output output', switch cont cont')
