@@ -23,7 +23,7 @@ clock = modify $ \m -> m { mCurrentPC = mCurrentPC m + 1 }
 goto :: PC -> Seq ()
 goto next = do
   Machine pc transitions <- get
-  put (Machine pc (M.insert pc next transitions))
+  put (Machine pc (M.insertWith (++) pc [next] transitions))
 
 
 prog = do
