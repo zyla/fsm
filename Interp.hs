@@ -1,3 +1,4 @@
+{-# LANGUAGE DeriveFunctor #-}
 import Control.Monad (ap)
 
 type PC = Int
