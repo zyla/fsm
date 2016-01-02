@@ -60,5 +60,5 @@ output out = (X, \self cont -> [(out, cont)])
 
 loop_from_to :: RegVal -> RegVal -> (Expr RegVal -> Seq) -> Seq
 loop_from_to from to actF =
-  let (_, act) = actF RegVal
+  let (_, act) = actF Reg
   in _
