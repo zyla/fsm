@@ -6,7 +6,7 @@ import Control.Monad.State
 
 type PC = Int
 
-data Machine = Machine { mNextPC :: PC, mTransitions :: M.Map PC PC } deriving (Show)
+data Machine = Machine { mCurrentPC :: PC, mTransitions :: M.Map PC PC } deriving (Show)
 
 type Seq = State Machine
 
