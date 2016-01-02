@@ -31,14 +31,11 @@ goto next = do
 
 
 prog = do
-  begin <- curState -- 0
-  clock -- 1
-  loop <- curState -- 2
-  clock -- 4
-  clock; clock
-  goto loop
-  clock -- 5
-  goto begin
+  repeat 4 outputCommand
+  repeat 12 outputCommand
+
+outputCommand = clock
+outputData = clock
 
 repeat n act = do
   loop <- curState
