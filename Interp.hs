@@ -39,6 +39,13 @@ compile prog =
   let concreteStates = zipWith (\index (initial, tr) -> ((index, initial), tr index)) [0..] prog
   in _
 
+cycleZipWith :: (a -> a -> b) -> [a] -> [b]
+cycleZipWith _ [] = []
+cycleZipWith f (hd:xs) = go (hd:xs)
+  where
+    go (x:y:xs) = f x y : go (y:xs)
+    go [x] = f x hd
+
 output :: Expr -> PC -> (PC, Expr) -> Transition
 output out self cont = Final out cont
 
