@@ -17,9 +17,11 @@ type Machine = M.Map PC Transition
 
 type Seq = State Machine
 
+(::=) = (,)
 
 dac = M.fromList
-  [ 0, Output 
+  [ (0, Output (Const 0) 1)
+  , (1, 
 
 
 render :: Transitions -> String
