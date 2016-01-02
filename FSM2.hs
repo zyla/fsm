@@ -49,7 +49,7 @@ instantiate (initial, m) = (initial, 0, zip [0..] (m 0 (Tuple 0 initial)))
 
 
 compileSwitch :: Expr RegVal -> Expr PC -> [(PC, (Expr Output, Cont))] -> Machine
-compileSwitch regval initialPC ((pc, (regval, output, cont)):xs) =
+compileSwitch initialRegval initialPC ((pc, (regval, output, cont)):xs) =
   let switch = If (Eq PC (Const pc))
       (_, _, output', cont') = compileSwitch regval initialPC xs
-  in (regval, initialPC, switch output output', switch cont cont')
+  in (initialRegval, initialPC, switch output output', switch cont cont')
