@@ -29,6 +29,7 @@ instance (Num a, Show a) => Num (Expr a) where
   signum = undefined
   negate = undefined
 
+at = Index
 
 type Cont = Expr (PC, RegVal)
 type Machine = (Expr RegVal, PC, Expr Output, Cont)
@@ -70,4 +71,6 @@ loop_from_to from to actF =
        )
      )
 
-dac = 
+dac = seqs
+  [ output 0
+  , loop_from_to 0 3 $ \index -> output (Index
