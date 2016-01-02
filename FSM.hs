@@ -5,7 +5,7 @@ import Prelude hiding (repeat)
 
 import GHC.TypeLits
 
-data Vec :: Nat -> * -> * where
+data Vec where
   Nil :: Vec 0 a
   (:>) :: a -> Vec n a -> Vec (n + 1) a
 
