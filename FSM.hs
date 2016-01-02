@@ -58,8 +58,9 @@ v = immediate
 repeat :: Int -> (Signal Int -> Seq) -> Seq
 repeat n act = withRegister (v 0) $ \x ->
   eq <- x ==. v n
-  if eq then 
-  act
+  if eq
+    then return ()
+    else do act; loop
 
 dac :: Signal (Vec 12 Bit) -> Seq
 dac input = do
