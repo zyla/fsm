@@ -18,7 +18,7 @@ type Machine = M.Map PC Transition
 type Seq = State Machine
 
 instance Num Expr where
-  fromInteger = Const
+  fromInteger = Const . fromInteger
 
 (.:) = (,)
 (==>) = (,)
