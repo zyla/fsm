@@ -46,7 +46,7 @@ dac =
 dac_prog =
   [ X ==> output 0
   , 0 ==> repeat_upto 3 (\index -> output (Index (NC "cmd") index))
-  , 0 ==> repeat_upto 3 (\index -> output (Index (NC "cmd") index))
+  , 0 ==> repeat_upto 3 (\index -> output (Index Input index))
   , X ==> output 17
   ]
 
