@@ -23,3 +23,12 @@ type Cont = Expr (PC, RegVal)
 type Machine = (Expr RegVal, Expr Output, Cont)
 
 type Seq = (Expr RegVal, PC -> Cont -> [Transition])
+
+sequence :: Seq -> Seq -> Seq
+sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
+  let firstSeq = t1 self (middlePC, contVal)
+      middlePC = self + length firstSeq
+  in firstSeq ++ t2 middlePC finalCont)
+
+loop_forever :: Seq -> Seq
+loop_forever (initial, trans) = (initial, \self cont -> trans self (self, initial))
