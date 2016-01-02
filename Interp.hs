@@ -21,7 +21,9 @@ type Seq = State Machine
 
 dac = M.fromList
   [ 0 .: Output (Const 0) 1
-  , 1 .: Output (Incr RegVal) 1
+  , 1 .: If (RegEqual 3)
+           Output (Const 0) 2
+           Output (Incr RegVal) 1
   ]
 
 
