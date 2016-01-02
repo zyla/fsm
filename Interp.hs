@@ -18,11 +18,7 @@ curState :: Seq PC
 curState = gets mCurrentPC
 
 clock :: Seq ()
-clock = do
-  m <- get
-  let pc = mCurrentPC m + 1
-  put $ m { mCurrentPC = pc }
-  return pc
+clock = modify $ \m -> m { mCurrentPC = mCurrentPC m + 1 }
 
 goto :: PC -> Seq ()
 goto next = do
