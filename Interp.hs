@@ -19,9 +19,9 @@ curState = gets mCurrentPC
 
 clock :: Seq ()
 clock = do
-  m <- get
-  goto (mCurrentPC m + 1)
-  put $ m { mCurrentPC = mCurrentPC m + 1 }
+  pc <- gets mCurrentPC
+  goto (pc + 1)
+  modify $ \m -> m { mCurrentPC = mCurrentPC m + 1 }
 
 goto :: PC -> Seq ()
 goto next = do
