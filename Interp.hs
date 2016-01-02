@@ -71,6 +71,12 @@ repeat_upto max act self cont =
    (act RegVal self cont)
    (act RegVal self (self, (Incr RegVal)))
 
+repeat_upto' :: Expr -> (Expr -> PC -> (PC, Expr) -> Transition) -> PC -> (PC, Expr) -> Transition
+repeat_upto' max act self cont = 
+  If (Eq RegVal max)
+   (act RegVal self cont)
+   (act RegVal self (self, (Incr RegVal)))
+
 
 render :: [(PC, Transition)] -> String
 render transitions = header ++ concatMap (trans "") transitions ++ footer
