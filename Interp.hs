@@ -12,7 +12,7 @@ type Seq = State Machine
 
 
 compile :: Seq () -> M.Map PC PC
-compile seq = execState seq (Machine 0 M.empty)
+compile seq = mTransitions $ execState seq (Machine 0 M.empty)
 
 curState :: Seq PC
 curState = gets mCurrentPC
