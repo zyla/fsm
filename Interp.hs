@@ -56,7 +56,6 @@ sync = clock
 repeat n act = do
   loop <- curState
   act
-  clock
   goto loop
 
 endlessly act = do
