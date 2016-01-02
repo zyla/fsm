@@ -12,7 +12,10 @@ type Seq = State Machine
 
 
 nextState :: Seq PC
-nextState = Seq $ \pc -> (pc, pc + 1)
+nextState = do
+  pc <- get
+  put (pc + 1)
+  return pc
 
 goto :: PC -> Seq ()
 goto pc = Seq $ \_ -> ((), pc)
