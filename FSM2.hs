@@ -28,6 +28,7 @@ instance Num a => Num (Expr a) where
   signum = undefined
   negate = undefined
 
+
 type Cont = Expr (PC, RegVal)
 type Machine = (Expr RegVal, Expr Output, Cont)
 
