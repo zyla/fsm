@@ -31,9 +31,9 @@ instance (Num a, Show a) => Num (Expr a) where
 
 
 type Cont = Expr (PC, RegVal)
-type Machine = (Expr RegVal, Expr Output, Cont)
+type Machine = (Expr RegVal, PC, Expr Output, Cont)
 
-type Seq = (Expr RegVal, PC -> Cont -> [Machine])
+type Seq = (Expr RegVal, PC -> Cont -> [(Expr Output, Cont)])
 
 sequence :: Seq -> Seq -> Seq
 sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
@@ -44,12 +44,12 @@ sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
 loop_forever :: Seq -> Seq
 loop_forever (initial, trans) = (initial, \self cont -> trans self (Tuple (Const self) initial))
 
-instantiate :: Seq -> (Expr RegVal, PC, [(PC, Machine)])
+instantiate :: Seq -> (Expr RegVal, PC, [(PC, (Expr Output, Cont))])
 instantiate (initial, m) = (initial, 0, zip [0..] (m 0 (Tuple 0 initial)))
 
 
-compileSwitch :: [(PC, Machine)] -> Machine
+compileSwitch :: [(PC, (Expr Output, Cont))] -> Machine
 compileSwitch ((pc, (regval, output, cont):xs) =
   let switch = If (Eq PC (Const pc))
-      (regval', output', cont') = compileSwitch xs
-  in (switch regval regval', switch output output', switch cont cont')
+      (output', cont') = compileSwitch xs
+  in (switch output output', switch cont cont')
