@@ -9,7 +9,7 @@ import Control.Monad.State
 type PC = Int
 
 data Cond = RegEqual Int
-data Transition = Goto PC | If Cond Transition Transition
+data Transition = Output PC | If Cond Transition Transition
 
 type Transitions = M.Map PC [PC]
 data Machine = Machine { mCurrentPC :: PC, mTransitions :: Transitions } deriving (Show)
