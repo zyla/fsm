@@ -36,7 +36,7 @@ type Seq = (Expr RegVal, PC -> Cont -> [Machine])
 
 sequence :: Seq -> Seq -> Seq
 sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
-  let firstSeq = t1 self (Tuple _ _)
+  let firstSeq = t1 self (Tuple (Const middlePC) contVal)
       middlePC = self + length firstSeq
   in firstSeq ++ t2 middlePC finalCont)
 
