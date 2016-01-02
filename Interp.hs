@@ -34,6 +34,8 @@ dac = M.fromList
   , 3 .: Final (Const 0) (1, (Const 0)) -- (Const 0) comes from 1
   ]
 
+output :: Expr -> PC -> (PC, Expr) -> Transition
+output out self cont = Final out cont
 
 repeat_upto :: Expr -> (Expr -> (PC, Expr) -> Transition) -> PC -> (PC, Expr) -> Transition
 repeat_upto max act self cont = 
