@@ -58,7 +58,12 @@ compileSwitch initialRegval initialPC ((pc, (output, cont)):xs) =
 output :: Expr Output -> Seq
 output out = (X, \self cont -> [(out, cont)])
 
-loop_from_to :: RegVal -> RegVal -> (Expr RegVal -> Seq) -> Seq
+loop_from_to :: Expr RegVal -> Expr RegVal -> (Expr RegVal -> Seq) -> Seq
 loop_from_to from to actF =
   let (_, act) = actF Reg
-  in (_, _)
+  in (from, \self cont -> act self
+       (If (Eq Reg to)
+         cont
+         (Const self `Tuple` Add Reg 1)
+       )
+     )
