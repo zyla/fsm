@@ -76,4 +76,5 @@ loop_from_to from to actF =
 dac = seqs
   [ output 0
   , loop_from_to 0 3 $ \index -> output (Var "cmd" `at` index)
+  , loop_from_to 0 11 $ \index -> output (Input `at` index)
   ]
