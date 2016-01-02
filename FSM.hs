@@ -106,3 +106,5 @@ sineGen :: Seq
 sineGen = repeat 100 $ \index -> dac $ bits $ immediate sineVals !! index
 
 (#.) = 1
+
+data Insn i o = Insn (
