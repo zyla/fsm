@@ -22,7 +22,7 @@ instance Num Bit where
 cmd :: Vec 4 Bit
 cmd = 0 :> 0 :> 1 :> 1 :> Nil
 
-data Seq
+data Seq' a
 
 output = undefined
 repeat = undefined
