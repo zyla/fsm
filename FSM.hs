@@ -2,7 +2,6 @@
 module FSM where
 
 import Control.Monad (ap)
-import Data.Function (fix)
 import Prelude hiding (repeat, (!!))
 
 import GHC.TypeLits
