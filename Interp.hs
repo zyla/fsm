@@ -13,8 +13,7 @@ data Cond = Not Cond | RegEqual RegVal deriving (Show)
 data Expr = RegVal | Incr Expr deriving (Show)
 data Transition = Output Expr PC | If Cond Transition (Maybe Transition) deriving (Show)
 
-type Transitions = M.Map PC Transition
-data Machine = Machine { mCurrentPC :: PC, mTransitions :: Transitions } deriving (Show)
+type Machine = M.Map PC Transition
 
 type Seq = State Machine
 
