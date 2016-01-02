@@ -99,4 +99,4 @@ showExpr (Incr x) = showExpr x ++ "+1"
 showCond (Not c) = "~(" ++ showCond c ++ ")"
 showCond (Eq e1 e2) = showExpr e1 ++ "=" ++ showExpr e2
 
-main = writeFile "/tmp/fsm.gv" $ render dac
+main = writeFile "/tmp/fsm.gv" $ render $ compile dac_prog
