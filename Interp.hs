@@ -24,7 +24,7 @@ stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 dac = M.fromList
   [ 0 .: Final (Const 0) (1, (Const 0))
   , 1 .: repeat_upto (Const 3)
-           (\cont -> Final (Index (NC "cmd") RegVal) cont))
+           (\index cont -> Final (Index (NC "cmd") index) cont))
            1 -- self
            (2, Const 0) -- cont
   , 2 .: If (Eq RegVal (Const 11))
@@ -34,11 +34,11 @@ dac = M.fromList
   ]
 
 
-repeat_upto :: Expr -> ((PC, Expr) -> Transition) -> PC -> (PC, Expr) -> Transition
+repeat_upto :: Expr -> (Expr -> (PC, Expr) -> Transition) -> PC -> (PC, Expr) -> Transition
 repeat_upto max act self cont = 
   If (Eq RegVal max)
-   (act cont)
-   (act (self, (Incr RegVal)))
+   (act RegVal cont)
+   (act RegVal (self, (Incr RegVal)))
 
 
 render :: Machine -> String
