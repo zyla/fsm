@@ -50,11 +50,14 @@ output = undefined
 immediate :: a -> Signal a
 immediate = undefined
 
+v = immediate
+
 (!!) :: Signal (Vec n a) -> Signal Int -> Signal a
 (!!) = undefined
 
 repeat :: Int -> (Signal Int -> Seq) -> Seq
-repeat n act = undefined
+repeat n act = do
+  eq <- 
 
 dac :: Signal (Vec 12 Bit) -> Seq
 dac input = do
@@ -78,4 +81,4 @@ sineVals = 2048 :> 2176 :> 2304 :> 2431 :> 2557 :> 2680 :> 2801 :> 2919 :> 3034 
 sineGen :: Seq
 sineGen = repeat 100 $ \index -> dac $ bits $ immediate sineVals !! index
 
-(...) = 1
+(#.) = 1
