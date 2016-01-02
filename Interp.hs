@@ -14,6 +14,9 @@ type Seq = State Machine
 compile :: Seq () -> Machine
 compile seq = execState seq (Machine 0 M.empty)
 
+curState :: Seq PC
+curState = gets mCurrentPC
+
 nextState :: Seq PC
 nextState = do
   m <- get
