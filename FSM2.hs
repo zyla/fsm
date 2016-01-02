@@ -13,6 +13,7 @@ data Expr a where
   Index :: Expr [a] -> Expr Int -> Expr a
   Const :: Show a => a -> Expr a
   Reg :: Expr RegVal
+  PC :: Expr PC
   Input :: Expr Input
   Add :: Expr a -> Expr a -> Expr a
   NC :: Expr a
@@ -47,4 +48,8 @@ instantiate :: Seq -> (Expr RegVal, PC, [(PC, Machine)])
 instantiate (initial, m) = (initial, 0, zip [0..] (m 0 (Tuple 0 initial)))
 
 
-compile :: (Expr RegVal, PC, [(PC, Machine)]) -> (Expr RegVal, PC, Machine)
+compileSwitch :: [(PC, Machine)] -> Machine
+compileSwitch ((pc, (regval, output, cont):xs) =
+  let switch = If (Eq PC (Const pc))
+      (regval', output', cont') = compileSwitch xs
+  in (switch regval regval', switch output output', switch cont cont')
