@@ -29,6 +29,9 @@ output = undefined
 repeat = undefined
 sample = undefined
 
+(!!) :: Signal (Vec n a) -> Signal Int -> Signal a
+(!!) = undefined
+
 dac :: Signal (Vec 12 Bit) -> Seq
 dac input = do
   repeat 4 $ \index -> output (0,1,0,cmd !! index)
