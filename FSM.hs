@@ -1,7 +1,7 @@
 {-# LANGUAGE DataKinds, TypeOperators, GADTs #-}
 module FSM where
 
-import Prelude hiding (repeat)
+import Prelude hiding (repeat, (!!))
 
 import GHC.TypeLits
 
