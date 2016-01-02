@@ -31,7 +31,7 @@ instance (Num a, Show a) => Num (Expr a) where
 
 
 type Cont = Expr (PC, RegVal)
-type Machine = (Expr RegVal, PC, Expr Output, Cont)
+type Machine = (Expr RegVal, Expr PC, Expr Output, Cont)
 
 type Seq = (Expr RegVal, PC -> Cont -> [(Expr Output, Cont)])
 
