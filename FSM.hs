@@ -11,14 +11,14 @@ data Vec n a where
 
 data Signal a
 
-cmd :: Vec 4 Bit
-cmd = 0 :> 0 :> 1 :> 1 :> Nil
-
 data Bit = B0 | B1
 
 instance Num Bit where
   fromInteger 0 = B0
   fromInteger 1 = B1
+
+cmd :: Vec 4 Bit
+cmd = 0 :> 0 :> 1 :> 1 :> Nil
 
 data Seq
 
