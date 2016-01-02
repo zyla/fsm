@@ -8,7 +8,7 @@ import Control.Monad.State
 
 type PC = Int
 
-data Cond = StateEqual Int
+data Cond = RegEqual Int
 data Transition = Goto PC | If Cond Transition Transition
 
 type Transitions = M.Map PC [PC]
