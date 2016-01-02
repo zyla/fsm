@@ -34,6 +34,8 @@ dac = M.fromList
   , 3 .: Final (Const 0) (1, (Const 0)) -- (Const 0) comes from 1
   ]
 
+compile :: [(Expr, PC -> (PC, Expr) -> Transition)] -> [(PC, Transition)]
+
 output :: Expr -> PC -> (PC, Expr) -> Transition
 output out self cont = Final out cont
 
