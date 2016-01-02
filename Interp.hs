@@ -78,8 +78,8 @@ repeat_upto' max body =
   let (act:acts) = body RegVal in
   [ (0, \self cont ->
     If (Eq RegVal max)
-     (act RegVal self cont)
-     (act RegVal self (self, (Incr RegVal))))
+     (act self cont)
+     (act self (self, (Incr RegVal))))
   ] ++ acts
 
 
