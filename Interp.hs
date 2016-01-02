@@ -6,7 +6,7 @@ import Control.Monad.State
 
 type PC = Int
 
-
+type Machine = M.Map PC PC
 
 type Seq = State Machine
 
