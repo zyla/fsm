@@ -11,6 +11,7 @@ data Vec n a where
 
 data Signal a
 
+cmd :: Vec 4 Bit
 cmd = 0 :> 0 :> 1 :> 1 :> Nil
 
 data Bit = B0 | B1
