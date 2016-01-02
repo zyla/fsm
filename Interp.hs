@@ -1,5 +1,7 @@
 {-# LANGUAGE DeriveFunctor #-}
 
+import Prelude hiding (repeat)
+
 import Control.Monad (ap)
 import qualified Data.Map as M
 import Control.Monad.State
