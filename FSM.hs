@@ -26,7 +26,7 @@ cmd = 0 :> 0 :> 1 :> 1 :> Nil
 bits :: Signal Int -> Signal (Vec n Bit)
 bits = undefined
 unbits :: Signal (Vec n Bit) -> Signal Int
-bits = undefined
+unbits = undefined
 
 data Seq' a deriving (Functor)
 type Seq = Seq' ()
