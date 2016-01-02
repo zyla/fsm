@@ -28,7 +28,7 @@ instance Num Expr where
 (.:) = (,)
 (==>) = (,)
 
-stateNames = [ "Init", "Cmd", "Data", "Sync" ]
+stateNames = [ "Init", "Cmd", "Data", "Sync" ] ++ map show [4..]
 
 dac =
   [ 0 .: output 0 0 (1, 0)
