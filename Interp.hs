@@ -43,7 +43,7 @@ render :: Machine -> String
 render transitions = header ++ concatMap (trans "") (M.toList transitions) ++ footer
   where
     header = "digraph { rankdir=LR; size=\"8,5\"; node [shape=circle]; "
-    trans conds (k, Final output rv pc) =
+    trans conds (k, Final output (pc, rv)) =
       showPC k ++ "->" ++ showPC pc ++ " [label=\"" ++ conds ++
         "↑" ++ showExpr output ++ "\\n " ++
         "R←" ++ showExpr rv ++ "\"]; "
