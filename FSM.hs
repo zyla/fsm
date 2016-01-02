@@ -108,6 +108,7 @@ sineGen = repeat 100 $ \index -> dac $ bits $ immediate sineVals !! index
 (#.) = 1
 
 type MState = Int
+type State = Int
 type Output = (Bit, Bit, Bit, Bit)
 
 data Insn = Insn (State -> MState -> (Output, State, MState))
