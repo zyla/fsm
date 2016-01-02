@@ -37,7 +37,8 @@ one (initial, trans) = (initial, \self cont -> [(self, trans self cont)])
 sequence :: StateSeq -> StateSeq -> StateSeq
 sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
   let firstSeq = t1 self _ in
-  firstSeq ++ t2 (self + length firstSeq) _)
+      middlePC = self + length firstSeq
+  firstSeq ++ t2 middlePC _)
 
 --stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 stateNames = map show [0..]
