@@ -9,8 +9,8 @@ import Control.Monad.State
 type PC = Int
 
 type RegVal = Int
-data Cond = RegEqual RegVal
-data Expr = RegVal | Incr Expr
+data Cond = RegEqual RegVal deriving (Show)
+data Expr = RegVal | Incr Expr deriving (Show)
 data Transition = Output Expr PC | If Cond Transition Transition deriving (Show)
 
 type Transitions = M.Map PC Transition
