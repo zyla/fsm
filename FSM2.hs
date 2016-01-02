@@ -15,7 +15,7 @@ data Expr a where
   Reg :: Expr RegVal
   Input :: Expr Input
   Add :: Expr a -> Expr a -> Expr a
-  X :: Expr a
+  NC :: Expr a
 
 
 type Machine = (Expr RegVal, Expr Output, Expr (PC, RegVal))
