@@ -56,7 +56,7 @@ sync = clock
 repeat n act = do
   loop <- curState
   act
-  transition $ If (RegEqual n) (Output RegVal loop) Nothing
+  transition $ If (Not $ RegEqual n) (Output (Incr RegVal) loop) Nothing
 
 endlessly act = do
   loop <- curState
