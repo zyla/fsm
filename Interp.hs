@@ -40,3 +40,5 @@ render :: M.Map PC PC -> String
 render transitions = header ++ concatMap trans (M.toList transitions ++ footer
   where
     header = "digraph { rankdir=LR; size=\"8,5\"; node [shape=circle]; "
+    footer = "}"
+    trans (k, v) = show k ++ "->" show v ++ ";"
