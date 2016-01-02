@@ -23,6 +23,7 @@ cmd :: Vec 4 Bit
 cmd = 0 :> 0 :> 1 :> 1 :> Nil
 
 data Seq' a
+type Seq = Seq' ()
 
 output = undefined
 repeat = undefined
