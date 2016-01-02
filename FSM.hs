@@ -47,6 +47,8 @@ instance Monad Seq' where
 
 output = undefined
 
+withRegister = undefined
+
 immediate :: a -> Signal a
 immediate = undefined
 
