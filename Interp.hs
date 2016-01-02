@@ -10,6 +10,7 @@ type PC = Int
 
 type RegVal = Int
 data Cond = RegEqual RegVal
+data Expr = RegVal | Incr Expr
 data Transition = Output Expr PC | If Cond Transition Transition
 
 type Transitions = M.Map PC Transition
