@@ -30,7 +30,7 @@ instance Num Expr where
 
 stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 
-dac = M.fromList
+dac =
   [ 0 .: output (Const 0) 0 (1, (Const 0))
   , 1 .: repeat_upto (Const 3)
            (\index self cont -> Final (Index (NC "cmd") index) cont)
@@ -99,4 +99,4 @@ showExpr (Incr x) = showExpr x ++ "+1"
 showCond (Not c) = "~(" ++ showCond c ++ ")"
 showCond (Eq e1 e2) = showExpr e1 ++ "=" ++ showExpr e2
 
-main = writeFile "/tmp/fsm.gv" $ render $ compile dac_prog
+main = writeFile "/tmp/fsm.gv" $ (render $ compile dac_prog) ++ (render dac)
