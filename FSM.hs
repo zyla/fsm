@@ -21,7 +21,7 @@ instance Num Bit where
   fromInteger 1 = B1
 
 cmd :: Signal (Vec 4 Bit)
-cmd = immediate (0 :> 0 :> 1 :> 1 :> Nil)
+cmd = 0 :> 0 :> 1 :> 1 :> Nil
 
 data Seq' a deriving (Functor)
 type Seq = Seq' ()
