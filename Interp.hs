@@ -27,7 +27,7 @@ goto next = do
 
 
 prog = do
-  begin <- curState -- 1
+  begin <- curState -- 0
   clock
   clock -- 2
   loop <- nextState -- 3
