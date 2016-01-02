@@ -9,6 +9,8 @@ data Vec n a where
   Nil :: Vec 0 a
   (:>) :: a -> Vec n a -> Vec (n + 1) a
 
+infixr 5 :>
+
 data Signal a
 
 data Bit = B0 | B1
