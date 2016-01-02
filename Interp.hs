@@ -74,7 +74,8 @@ repeat_upto max act self cont =
    (act RegVal self (self, (Incr RegVal)))
 
 repeat_upto' :: Expr -> (Expr -> [SD]) -> [SD]
-repeat_upto' max (act:acts) =
+repeat_upto' max body =
+  let (act:acts) = body RegVal in
   [ (0, \self cont ->
     If (Eq RegVal max)
      (act RegVal self cont)
