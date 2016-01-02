@@ -39,6 +39,7 @@ render transitions = header ++ concatMap trans (M.toList transitions) ++ footer
     trans (k, Output rv pc) = show k ++ "->" ++ show pc ++ " [label=\"R<-" ++ showExpr rv ++ "\"]; "
     trans (k, If cond l r) = trans (k, l) ++ trans (k, r)
 
+showExpr (Const x) = show x
 showExpr RegVal = "R"
 showExpr (Incr x) = showExpr x ++ "+1"
 
