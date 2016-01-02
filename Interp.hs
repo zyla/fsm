@@ -1,7 +1,11 @@
 {-# LANGUAGE DeriveFunctor #-}
+
 import Control.Monad (ap)
+import qualified Data.Map as M
 
 type PC = Int
+
+
 
 data Seq a = Seq { unSeq :: PC -> (a, PC) } deriving (Functor)
 
