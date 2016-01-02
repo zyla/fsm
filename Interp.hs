@@ -39,7 +39,7 @@ transition next = do
 goto target = transition $ Output RegVal target
 
 appendT next Nothing = next
-appendT next (Just (If cond l r)) = If cond l (appendT r next)
+appendT next (Just (If cond l r)) = If cond l $ Just $ appendT r next
 appendT _    (Just x) = x
 
 
