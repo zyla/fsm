@@ -36,7 +36,7 @@ dac = M.fromList
 
 compile :: [(Expr, PC -> (PC, Expr) -> Transition)] -> [(PC, Transition)]
 compile prog =
-  let mapping = M.fromList $ zipWith (\index (initial, tr) -> (index, (initial, tr index))) [0..] prog
+  let mapping = zipWith (\index (initial, tr) -> (index, (initial, tr index))) [0..] prog
   in _
 
 output :: Expr -> PC -> (PC, Expr) -> Transition
