@@ -9,7 +9,7 @@ import Control.Monad.State
 type PC = Int
 
 type RegVal = Int
-data Cond = RegEqual RegVal deriving (Show)
+data Cond = Not Cond | RegEqual RegVal deriving (Show)
 data Expr = RegVal | Incr Expr deriving (Show)
 data Transition = Output Expr PC | If Cond Transition (Maybe Transition) deriving (Show)
 
@@ -56,7 +56,7 @@ sync = clock
 repeat n act = do
   loop <- curState
   act
-  goto loop
+  transition $ If (RegEqual n) (Output RegVal loop) Nothing
 
 endlessly act = do
   loop <- curState
