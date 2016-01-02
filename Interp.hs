@@ -33,9 +33,6 @@ goto next = do
 prog = do
   begin <- curState -- 0
   clock -- 1
-  clock -- 2
-  clock
-  clock
   loop <- curState -- 2
   clock -- 4
   goto loop
