@@ -19,6 +19,8 @@ type Seq = State Machine
 
 (.:) = (,)
 
+stateNames = [ "Init", "Cmd", "Data", "Sync" ]
+
 dac = M.fromList
   [ 0 .: Output (Const 0) 1
   , 1 .: If (Eq RegVal (Const 3))
