@@ -25,7 +25,7 @@ dac = M.fromList
   ]
 
 
-render :: Transitions -> String
+render :: Machine -> String
 render transitions = header ++ concatMap trans (M.toList transitions) ++ footer
   where
     header = "digraph { rankdir=LR; size=\"8,5\"; node [shape=circle]; "
