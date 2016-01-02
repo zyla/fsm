@@ -15,6 +15,7 @@ data Transition = Final Expr (PC, Expr) | If Cond Transition Transition deriving
 
 -- TODO fix structure:
 -- continuation should be a ifable expression
+-- Transition = (Expr output, Expr PC, Expr reg)
 
 type Machine = M.Map PC Transition
 
