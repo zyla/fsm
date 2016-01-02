@@ -30,7 +30,7 @@ prog = do
   begin <- curState -- 0
   clock
   clock
-  loop <- nextState -- 3
+  loop <- curState -- 3
   nextState -- 4
   goto loop
   nextState -- 5
