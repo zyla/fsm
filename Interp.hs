@@ -46,7 +46,7 @@ repeat n act = do
   act
   goto loop
 
-forever act = do
+endlessly act = do
   loop <- curState
   act
   goto loop
