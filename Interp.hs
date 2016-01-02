@@ -42,7 +42,7 @@ render transitions = header ++ concatMap (trans "") (M.toList transitions) ++ fo
         "O<-" ++ showExpr output ++ "\\n " ++
         "R<-" ++ showExpr rv ++ "\"]; "
     trans conds (k, If cond l r) =
-      let cstr = conds ++ showCond cond ++ " =>\\n"
+      let cstr = conds ++ "if " ++ showCond cond ++ "\\n"
       in trans cstr (k, l) ++ trans conds (k, r)
     footer = "}"
 
