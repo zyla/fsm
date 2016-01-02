@@ -18,7 +18,7 @@ type Machine = M.Map PC Transition
 type Seq = State Machine
 
 (.:) = (,)
-(==>) = (,)
+(=>) = (,)
 
 stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 
