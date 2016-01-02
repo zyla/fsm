@@ -30,7 +30,6 @@ instance Monad Seq' where
   (>>=) = undefined
 
 output = undefined
-repeat = undefined
 sample = undefined
 
 immediate :: a -> Signal a
@@ -38,6 +37,9 @@ immediate = undefined
 
 (!!) :: Signal (Vec n a) -> Signal Int -> Signal a
 (!!) = undefined
+
+repeat :: Int -> Seq -> Seq
+repeat = undefined
 
 dac :: Signal (Vec 12 Bit) -> Seq
 dac input = do
