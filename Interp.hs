@@ -69,6 +69,6 @@ render transitions = header ++ concatMap trans (M.toList transitions) ++ footer
     footer = "}"
     trans (k, Output rv pc) = show k ++ "->" ++ show pc ++ " [label=\"R=" ++ show rv ++ "\"; "
     trans (k, If cond l (Just r)) = trans (k, l) ++ trans (k, r)
-    trans (k, If cond l Nothing) = trans (k, If cond l (Output RegVal (k + 1)))
+    trans (k, If cond l Nothing) = trans (k, If cond l (Just $ Output RegVal (k + 1)))
 
 main = writeFile "/tmp/fsm.gv" $ render $ compile prog
