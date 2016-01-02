@@ -41,6 +41,8 @@ sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
       middlePC = self + length firstSeq
   in firstSeq ++ t2 middlePC finalCont)
 
+seqs = foldr1 sequence
+
 loop_forever :: Seq -> Seq
 loop_forever (initial, trans) = (initial, \self cont -> trans self (Tuple (Const self) initial))
 
@@ -67,3 +69,5 @@ loop_from_to from to actF =
          (Const self `Tuple` Add Reg 1)
        )
      )
+
+dac = 
