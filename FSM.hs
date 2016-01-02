@@ -1,4 +1,13 @@
-cmd = [0, 0, 1, 1]
+{-# LANGUAGE DataKinds #-}
+module FSM where
+
+import GHC.TypeLits
+
+data Vec :: Nat -> * -> * where
+  Nil :: Vec 0 a
+  (:>) :: a -> Vec n a ->
+
+cmd = 0 :> 0 :> 1 :> 1 :> Nil
 
 dac :: Signal (Vec 12 Bit) -> Seq
 dac input = do
