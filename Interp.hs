@@ -17,6 +17,9 @@ type Machine = M.Map PC Transition
 
 type Seq = State Machine
 
+instance Num Expr where
+  fromInteger = Const
+
 (.:) = (,)
 (==>) = (,)
 
@@ -36,7 +39,7 @@ dac = M.fromList
   ]
 
 dac_prog =
-  [ 
+  [ Const 0 ==> output (Const 0)
 
 compile :: [(Expr, PC -> (PC, Expr) -> Transition)] -> [(PC, Transition)]
 compile prog =
