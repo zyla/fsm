@@ -47,10 +47,10 @@ unbits = undefined
 (==.) = undefined
 
 type MState = Int
-type State = Int
+type St = Int
 type Output = (Bit, Bit, Bit, Bit)
 
-data Insn = Insn (State -> MState -> (Output, State, MState))
+data Insn = Insn (St -> MState -> (Output, St, MState))
 
 
 data Seq' a deriving (Functor)
