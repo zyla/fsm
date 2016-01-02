@@ -27,8 +27,8 @@ dac = M.fromList
            (Final (Index (NC "cmd") RegVal) (2, (Const 0))) -- (Const 0) comes from 2
            (Final (Index (NC "cmd") RegVal) (1, (Incr RegVal)))
   , 2 .: If (Eq RegVal (Const 11))
-           (Final (Index Input RegVal) (Const 0) 3) -- (Const 0) comes from 3)
-           (Final (Index Input RegVal) (Incr RegVal) 2)
+           (Final (Index Input RegVal) (3, (Const 0))) -- (Const 0) comes from 3)
+           (Final (Index Input RegVal) (2, (Incr RegVal)))
   , 3 .: Final (Const 0) (Const 0) 1 -- (Const 0) comes from 1
   ]
 
