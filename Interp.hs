@@ -24,7 +24,7 @@ stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 dac = M.fromList
   [ 0 .: Final (Const 0) (1, (Const 0))
   , 1 .: repeat_upto (Const 3)
-           (\cont -> Final (Index (NC "cmd") cont))
+           (\cont -> Final (Index (NC "cmd") RegVal) cont))
            1 -- self
            (2, Const 0) -- cont
   , 2 .: If (Eq RegVal (Const 11))
