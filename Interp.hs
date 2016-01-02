@@ -46,6 +46,11 @@ repeat n act = do
   act
   goto loop
 
+forever act = do
+  loop <- curState
+  act
+  goto loop
+
 render :: Transitions -> String
 render transitions = header ++ concatMap trans (M.toList transitions) ++ footer
   where
