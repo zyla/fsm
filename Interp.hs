@@ -41,7 +41,7 @@ prog = do
   goto begin
 
 
-render :: M.Map PC PC -> String
+render :: Transitions -> String
 render transitions = header ++ concatMap trans (M.toList transitions) ++ footer
   where
     header = "digraph { rankdir=LR; size=\"8,5\"; node [shape=circle]; "
