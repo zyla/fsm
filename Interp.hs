@@ -28,6 +28,11 @@ instance Num Expr where
 (.:) = (,)
 (==>) = (,)
 
+type StateSeq = (Expr, PC -> (PC, Expr) -> [(PC, Transition)])
+
+one :: SD -> StateSeq
+one (initial, trans) = (initial, \self cont -> [trans self cont])
+
 --stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 stateNames = map show [0..]
 
