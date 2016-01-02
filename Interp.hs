@@ -18,3 +18,6 @@ instance Monad Seq where
 
 nextState :: Seq PC
 nextState = Seq $ \pc -> (pc, pc + 1)
+
+goto :: PC -> Seq ()
+goto pc = Seq $ \_ -> ((), pc)
