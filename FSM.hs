@@ -67,7 +67,7 @@ repeat n act = withRegister (v 0) $ \x ->
   eq <- x ==. v n
   if eq
     then return ()
-    else do act; loop
+    else do act x; loop
 
 dac :: Signal (Vec 12 Bit) -> Seq
 dac input = do
