@@ -31,4 +31,4 @@ sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
   in firstSeq ++ t2 middlePC finalCont)
 
 loop_forever :: Seq -> Seq
-loop_forever (initial, trans) = (initial, \self cont -> trans self $ Tuple (self, initial))
+loop_forever (initial, trans) = (initial, \self cont -> trans self (Tuple self initial))
