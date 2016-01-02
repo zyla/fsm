@@ -4,7 +4,7 @@ import Prelude hiding (sequence)
 
 type PC = Int
 type RegVal = Int
-type Input = Int
+type Input = [Int]
 type Output = Int
 
 data Cond = Not Cond | Eq (Expr Int) (Expr Int)
