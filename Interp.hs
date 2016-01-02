@@ -84,7 +84,6 @@ repeat_upto' max body =
      (act self (self, (Incr RegVal))))
   ] ++ acts
 
-
 render :: [(PC, Transition)] -> String
 render transitions = header ++ concatMap (trans "") transitions ++ footer
   where
