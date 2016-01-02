@@ -40,7 +40,7 @@ render transitions = header ++ concatMap (trans "") (M.toList transitions) ++ fo
       show k ++ "->" ++ show pc ++ " [label=\"" ++ conds ++ "R<-" ++ showExpr rv ++ "\"]; "
     trans conds (k, If cond l r) =
       let cstr = conds ++ showCond cond ++ " => "
-      in trans cstr (k, l) ++ trans cstr (k, r)
+      in trans cstr (k, l) ++ trans conds (k, r)
 
 showExpr (Const x) = show x
 showExpr RegVal = "R"
