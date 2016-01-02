@@ -70,4 +70,4 @@ sineVals = 2048 :> 2176 :> 2304 :> 2431 :> 2557 :> 2680 :> 2801 :> 2919 :> 3034 
         :> Nil
 
 sineGen :: Seq
-sineGen = repeat 100 $ \index -> dac $ unbits $ sineVals !! index
+sineGen = repeat 100 $ \index -> dac $ bits $ sineVals !! index
