@@ -31,8 +31,8 @@ clock = do
   goto (pc + 1)
   modify $ \m -> m { mCurrentPC = mCurrentPC m + 1 }
 
-goto :: Transition -> Seq ()
-goto next = do
+transition :: Transition -> Seq ()
+transition next = do
   Machine pc transitions <- get
   put (Machine pc (M.alter pc [next] transitions))
 
