@@ -60,6 +60,9 @@ instance Monad Seq' where
 
 output = undefined
 
+set :: Signal a -> Signal a -> Seq
+set = undefined
+
 withRegister = undefined
 
 immediate :: a -> Signal a
