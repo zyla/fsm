@@ -26,7 +26,7 @@ type Seq = (Expr RegVal, PC -> Cont -> [Machine])
 
 sequence :: Seq -> Seq -> Seq
 sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
-  let firstSeq = t1 self (middlePC, contVal)
+  let firstSeq = t1 self _
       middlePC = self + length firstSeq
   in firstSeq ++ t2 middlePC finalCont)
 
