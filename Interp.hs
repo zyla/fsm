@@ -20,4 +20,5 @@ nextState = do
 
 goto :: PC -> Seq ()
 goto next = do
-  pc <- get
+  Machine pc transitions <- get
+  put (Machine pc (M.insert pc next transitions))
