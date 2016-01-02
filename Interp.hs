@@ -39,10 +39,12 @@ render transitions = header ++ concatMap (trans "") (M.toList transitions) ++ fo
     header = "digraph { rankdir=LR; size=\"8,5\"; node [shape=circle]; "
     footer = "}"
     trans conds (k, Output rv pc) =
-      show k ++ "->" ++ showPC pc ++ " [label=\"" ++ conds ++ "R<-" ++ showExpr rv ++ "\"]; "
+      showPC k ++ "->" ++ showPC pc ++ " [label=\"" ++ conds ++ "R<-" ++ showExpr rv ++ "\"]; "
     trans conds (k, If cond l r) =
       let cstr = conds ++ showCond cond ++ " => "
       in trans cstr (k, l) ++ trans conds (k, r)
+
+showPC = (stateNames !!)
 
 showExpr (Const x) = show x
 showExpr RegVal = "R"
