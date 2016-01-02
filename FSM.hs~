@@ -35,6 +35,7 @@ instance Monad Seq' where
   (>>=) = undefined
 
 output = undefined
+sample = undefined
 
 immediate :: a -> Signal a
 immediate = undefined
