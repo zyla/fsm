@@ -18,7 +18,7 @@ data Expr a where
   Add :: Expr a -> Expr a -> Expr a
   NC :: Expr a
 
-  If :: Expr Bool -> Expr a -> Expr a -> Expr a
+  If :: Cond -> Expr a -> Expr a -> Expr a
 
 
 instance (Num a, Show a) => Num (Expr a) where
