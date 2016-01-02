@@ -40,12 +40,14 @@ dac = M.fromList
            (\index self cont -> Final (Index Input index) cont)
            2 -- self
            (3, Const 0) -- cont
-  , 3 .: Final (Const 0) (1, (Const 0)) -- (Const 0) comes from 1
+  , 3 .: Final (Const 17) (1, (Const 0)) -- (Const 0) comes from 1
   ]
 
 dac_prog =
-  [ 0 ==> output 0
+  [ X ==> output 0
   , 0 ==> repeat_upto 3 (\index -> output (Index (NC "cmd") index))
+  , 0 ==> repeat_upto 3 (\index -> output (Index (NC "cmd") index))
+  , X ==> output 17
   ]
 
 compile :: [(Expr, PC -> (PC, Expr) -> Transition)] -> [(PC, Transition)]
