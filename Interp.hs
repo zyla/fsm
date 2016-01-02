@@ -42,4 +42,4 @@ render transitions = header ++ concatMap trans (M.toList transitions) ++ footer
 showExpr RegVal = "R"
 showExpr (Incr x) = showExpr x ++ "+1"
 
-main = writeFile "/tmp/fsm.gv" $ render $ compile prog
+main = writeFile "/tmp/fsm.gv" $ render dac
