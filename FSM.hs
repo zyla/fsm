@@ -109,4 +109,6 @@ sineGen = repeat 100 $ \index -> dac $ bits $ immediate sineVals !! index
 
 type MState = Int
 
-data Insn i o s = Insn (i -> s -> MState -> (o, s, MState))
+data Insn o s = Insn (s -> MState -> (o, s, MState))
+
+
