@@ -10,6 +10,7 @@ type PC = Int
 
 type Seq = State Machine
 
+
 nextState :: Seq PC
 nextState = Seq $ \pc -> (pc, pc + 1)
 
