@@ -12,7 +12,7 @@ data Machine = Machine { mCurrentPC :: PC, mTransitions :: Transitions } derivin
 type Seq = State Machine
 
 
-compile :: Seq () -> M.Map PC PC
+compile :: Seq () -> Transitions
 compile seq = mTransitions $ execState seq (Machine 0 M.empty)
 
 curState :: Seq PC
