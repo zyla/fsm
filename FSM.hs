@@ -25,6 +25,10 @@ cmd = immediate (0 :> 0 :> 1 :> 1 :> Nil)
 data Seq' a deriving (Functor)
 type Seq = Seq' ()
 
+instance Monad Seq' where
+  return = undefined
+  (>>=) = undefined
+
 output = undefined
 repeat = undefined
 sample = undefined
