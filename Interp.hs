@@ -22,14 +22,14 @@ type Seq = State Machine
 stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 
 dac = M.fromList
-  [ 0 .: Final (Const 0) (Const 0) 1
+  [ 0 .: Final (Const 0) (1, (Const 0))
   , 1 .: If (Eq RegVal (Const 3))
            (Final (Index (NC "cmd") RegVal) (2, (Const 0))) -- (Const 0) comes from 2
            (Final (Index (NC "cmd") RegVal) (1, (Incr RegVal)))
   , 2 .: If (Eq RegVal (Const 11))
            (Final (Index Input RegVal) (3, (Const 0))) -- (Const 0) comes from 3)
            (Final (Index Input RegVal) (2, (Incr RegVal)))
-  , 3 .: Final (Const 0) (Const 0) 1 -- (Const 0) comes from 1
+  , 3 .: Final (Const 0) (1, (Const 0)) -- (Const 0) comes from 1
   ]
 
 
