@@ -75,6 +75,8 @@ compile prog =
   let concreteStates = zipWith (\index (initial, tr) -> ((index, initial), tr index)) [0..] prog
   in cycleZipWith (\((index, _), tr) (cont, _) -> (index, tr cont)) concreteStates
 
+compile' :: [SD] -> [(PC, Transition)]
+
 cycleZipWith :: (a -> a -> b) -> [a] -> [b]
 cycleZipWith _ [] = []
 cycleZipWith f (hd:xs) = go (hd:xs)
