@@ -68,6 +68,7 @@ immediate :: a -> Signal a
 immediate = undefined
 
 fix :: (Seq -> Seq) -> Seq
+fix = undefined
 
 v = immediate
 
