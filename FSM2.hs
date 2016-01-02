@@ -4,7 +4,7 @@ type PC = Int
 type RegVal = Int
 type Input = Int
 
-data Cond = Not Cond | forall a. Eq (Expr a) (Expr a)
+data Cond = Not Cond | Eq (Expr Int) (Expr Int)
 
 data Expr a where
   Var :: String -> Expr a
