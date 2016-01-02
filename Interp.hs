@@ -13,6 +13,9 @@ data Cond = Not Cond | Eq Expr Expr deriving (Show)
 data Expr = NC String | Index Expr Expr | Const RegVal | RegVal | Input | Incr Expr | X deriving (Show)
 data Transition = Final Expr (PC, Expr) | If Cond Transition Transition deriving (Show)
 
+-- TODO fix structure:
+-- continuation should be a ifable expression
+
 type Machine = M.Map PC Transition
 
 type Seq = State Machine
@@ -95,14 +98,13 @@ repeat_upto max act self cont =
    (act RegVal self cont)
    (act RegVal self (self, (Incr RegVal)))
 
+-- WARNING: ignores initial!
 repeat_upto_seq :: Expr -> (Expr -> Seq) -> Seq
-repeat_upto_seq max body =
-  let ((_, act):acts) = body RegVal in
-  [ (0, \self cont ->
-    If (Eq RegVal max)
-     (act self cont)
-     (act self (self, (Incr RegVal))))
-  ] ++ acts
+repeat_upto_seq max (_, body) = (0, \self cont ->
+  let ((_, act):acts) = body self cont
+  If (Eq RegVal max)
+   (act RegVal self cont)
+   (act RegVal self (self, (Incr RegVal)))
 
 render :: [(PC, Transition)] -> String
 render transitions = header ++ concatMap (trans "") transitions ++ footer
