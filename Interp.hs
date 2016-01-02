@@ -1,6 +1,6 @@
 type PC = Int
 
-data Seq a = Seq { unSeq :: PC -> (a, PC) deriving (Functor)
+data Seq a = Seq { unSeq :: PC -> (a, PC) } deriving (Functor)
 
 instance Applicative Seq where
   pure = return
