@@ -33,8 +33,7 @@ render transitions = header ++ concatMap trans (M.toList transitions) ++ footer
     header = "digraph { rankdir=LR; size=\"8,5\"; node [shape=circle]; "
     footer = "}"
     trans (k, Output rv pc) = show k ++ "->" ++ show pc ++ " [label=\"R<-" ++ showExpr rv ++ "\"]; "
-    trans (k, If cond l (Just r)) = trans (k, l) ++ trans (k, r)
-    trans (k, If cond l Nothing) = trans (k, If cond l (Just $ Output RegVal (k + 1)))
+    trans (k, If cond l r) = trans (k, l) ++ trans (k, r)
 
 showExpr RegVal = "R"
 showExpr (Incr x) = showExpr x ++ "+1"
