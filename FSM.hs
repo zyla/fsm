@@ -20,6 +20,12 @@ instance Num Bit where
   fromInteger 0 = B0
   fromInteger 1 = B1
 
+  (+) = undefined
+  (*) = undefined
+  abs = undefined
+  signum = undefined
+  negate = undefined
+
 cmd :: Vec 4 Bit
 cmd = 0 :> 0 :> 1 :> 1 :> Nil
 
