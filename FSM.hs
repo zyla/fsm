@@ -1,4 +1,4 @@
-{-# LANGUAGE DataKinds, TypeOperators #-}
+{-# LANGUAGE DataKinds, TypeOperators, GADTs #-}
 module FSM where
 
 import Prelude hiding (repeat)
