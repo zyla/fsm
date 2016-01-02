@@ -63,11 +63,11 @@ cycleZipWith f (hd:xs) = go (hd:xs)
 output :: Expr -> PC -> (PC, Expr) -> Transition
 output out self cont = Final out cont
 
-repeat_upto :: Expr -> (Expr -> (PC, Expr) -> Transition) -> PC -> (PC, Expr) -> Transition
+repeat_upto :: Expr -> (Expr -> PC -> (PC, Expr) -> Transition) -> PC -> (PC, Expr) -> Transition
 repeat_upto max act self cont = 
   If (Eq RegVal max)
-   (act RegVal cont)
-   (act RegVal (self, (Incr RegVal)))
+   (act RegVal self cont)
+   (act RegVal self (self, (Incr RegVal)))
 
 
 render :: Machine -> String
