@@ -1,3 +1,5 @@
+import Control.Monad (ap)
+
 type PC = Int
 
 data Seq a = Seq { unSeq :: PC -> (a, PC) } deriving (Functor)
