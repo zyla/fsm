@@ -31,10 +31,11 @@ clock = do
   goto (pc + 1)
   modify $ \m -> m { mCurrentPC = mCurrentPC m + 1 }
 
-goto :: PC -> Seq ()
+goto :: Transition -> Seq ()
 goto next = do
   Machine pc transitions <- get
-  put (Machine pc (M.insertWith (++) pc [next] transitions))
+  put (Machine pc (M.alter pc [next] transitions))
+
 
 
 prog = endlessly $ do
