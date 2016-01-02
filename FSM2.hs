@@ -18,4 +18,4 @@ data Expr a where
   X :: Expr a
 
 
-type Machine = (Expr Output, Expr (PC, RegVal))
+type Machine = (Expr RegVal, Expr Output, Expr (PC, RegVal))
