@@ -75,7 +75,8 @@ compile prog =
   let concreteStates = zipWith (\index (initial, tr) -> ((index, initial), tr index)) [0..] prog
   in cycleZipWith (\((index, _), tr) (cont, _) -> (index, tr cont)) concreteStates
 
-compile' :: [SD] -> [(PC, Transition)]
+compile' :: StateSeq -> [(PC, Transition)]
+compile' (initial, trans) = trans 0 (0, initial)
 
 cycleZipWith :: (a -> a -> b) -> [a] -> [b]
 cycleZipWith _ [] = []
