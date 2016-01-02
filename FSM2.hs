@@ -1,5 +1,7 @@
 {-# LANGUAGE ExistentialQuantification, GADTs #-}
 
+import Prelude hiding (sequence)
+
 type PC = Int
 type RegVal = Int
 type Input = Int
