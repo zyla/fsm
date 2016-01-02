@@ -67,6 +67,8 @@ withRegister = undefined
 immediate :: a -> Signal a
 immediate = undefined
 
+fix :: (Seq -> Seq) -> Seq
+
 v = immediate
 
 (!!) :: Signal (Vec n a) -> Signal Int -> Signal a
