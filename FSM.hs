@@ -15,6 +15,10 @@ cmd = 0 :> 0 :> 1 :> 1 :> Nil
 
 data Bit = B0 | B1
 
+instance Num Bit where
+  fromInteger 0 = B0
+  fromInteger 1 = B1
+
 data Seq
 
 output = undefined
