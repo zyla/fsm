@@ -50,6 +50,9 @@ showPC = (stateNames !!)
 
 showExpr (Const x) = show x
 showExpr RegVal = "R"
+showExpr Input = "I"
+showExpr (NC s) = s
+showExpr (Index a i) = showExpr a ++ "[" ++ showExpr i ++ "]"
 showExpr (Incr x) = showExpr x ++ "+1"
 
 showCond (Not c) = "~(" ++ showCond c ++ ")"
