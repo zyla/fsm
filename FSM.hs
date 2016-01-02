@@ -19,8 +19,8 @@ instance Num Bit where
   fromInteger 0 = B0
   fromInteger 1 = B1
 
-cmd :: Vec 4 Bit
-cmd = 0 :> 0 :> 1 :> 1 :> Nil
+cmd :: Signal (Vec 4 Bit)
+cmd = immediate (0 :> 0 :> 1 :> 1 :> Nil)
 
 data Seq' a
 type Seq = Seq' ()
@@ -28,6 +28,9 @@ type Seq = Seq' ()
 output = undefined
 repeat = undefined
 sample = undefined
+
+immediate :: a -> Signal a
+immediate = undefined
 
 (!!) :: Signal (Vec n a) -> Signal Int -> Signal a
 (!!) = undefined
