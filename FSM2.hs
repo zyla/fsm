@@ -8,4 +8,8 @@ data Expr where
   Var :: String -> Expr a
   Index :: Expr [a] -> Expr Int -> Expr a
   Const :: a -> Expr a
-  Reg ::  | Input | Incr Expr | X deriving (Show)
+  Reg :: Expr RegVal
+  Input :: Expr Input
+  Add :: Expr a -> Expr a -> Expr a
+  X :: Expr a
+  deriving (Show)
