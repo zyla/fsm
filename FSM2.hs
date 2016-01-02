@@ -41,8 +41,6 @@ sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
       middlePC = self + length firstSeq
   in firstSeq ++ t2 middlePC finalCont)
 
-(») = sequence
-
 loop_forever :: Seq -> Seq
 loop_forever (initial, trans) = (initial, \self cont -> trans self (Tuple (Const self) initial))
 
