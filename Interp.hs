@@ -28,10 +28,11 @@ instance Num Expr where
 (.:) = (,)
 (==>) = (,)
 
+type SD = (Expr, PC -> (PC, Expr) -> Transition)
 type StateSeq = (Expr, PC -> (PC, Expr) -> [(PC, Transition)])
 
 one :: SD -> StateSeq
-one (initial, trans) = (initial, \self cont -> [trans self cont])
+one (initial, trans) = (initial, \self cont -> [(self, trans self cont)])
 
 --stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 stateNames = map show [0..]
@@ -59,8 +60,6 @@ dac_prog = concat
   ]
 
 output' x = [X ==> output x]
-
-type SD = (Expr, PC -> (PC, Expr) -> Transition)
 
 compile :: [SD] -> [(PC, Transition)]
 compile prog =
