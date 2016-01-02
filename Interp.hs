@@ -38,6 +38,7 @@ transition next = do
 
 goto target = transition $ Output RegVal target
 
+appendT :: Transition -> Maybe Transition -> Transition
 appendT next Nothing = next
 appendT next (Just (If cond l r)) = If cond l $ Just $ appendT r next
 appendT _    (Just x) = x
