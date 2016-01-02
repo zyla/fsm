@@ -42,6 +42,3 @@ sequence (initial, t1) (contVal, t2) = (initial, \self finalCont ->
 
 loop_forever :: Seq -> Seq
 loop_forever (initial, trans) = (initial, \self cont -> trans self (Tuple (Const self) initial))
-
-instantiate :: Seq -> (Expr RegVal, PC, [(PC, Machine)])
-instantiate (initial, m) = (initial, 0, zip [0..] (m 0 (Tuple 0 initial)))
