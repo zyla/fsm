@@ -23,6 +23,9 @@ instance Num Bit where
 cmd :: Vec 4 Bit
 cmd = 0 :> 0 :> 1 :> 1 :> Nil
 
+bits :: Signal Int -> Signal (Vec n Bit)
+unbits :: Signal (Vec n Bit) -> Signal Int
+
 data Seq' a deriving (Functor)
 type Seq = Seq' ()
 
@@ -51,7 +54,7 @@ dac input = do
   repeat 12 $ \index -> output (0,1,0,input !! index)
   output (0,1,1,0)
 
-sineVals :: Vec 100 (Unsigned 12)
+sineVals :: Vec 100 Int
 sineVals = 2048 :> 2176 :> 2304 :> 2431 :> 2557 :> 2680 :> 2801 :> 2919 :> 3034 :> 3145
         :> 3251 :> 3353 :> 3449 :> 3540 :> 3625 :> 3704 :> 3776 :> 3842 :> 3900 :> 3951
         :> 3995 :> 4031 :> 4059 :> 4079 :> 4091 :> 4095 :> 4091 :> 4079 :> 4059 :> 4031
@@ -63,3 +66,6 @@ sineVals = 2048 :> 2176 :> 2304 :> 2431 :> 2557 :> 2680 :> 2801 :> 2919 :> 3034 
         :>  100 :>  144 :>  195 :>  253 :>  319 :>  391 :>  470 :>  555 :>  646 :>  742
         :>  844 :>  950 :> 1061 :> 1176 :> 1294 :> 1415 :> 1538 :> 1664 :> 1791 :> 1919
         :> Nil
+
+sineGen :: Seq
+sineGen = repeat 100 $ \index -> dac $ unbits $ sineVals !! index
