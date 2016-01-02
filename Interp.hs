@@ -37,7 +37,7 @@ dac = M.fromList
 compile :: [(Expr, PC -> (PC, Expr) -> Transition)] -> [(PC, Transition)]
 compile prog =
   let concreteStates = zipWith (\index (initial, tr) -> ((index, initial), tr index)) [0..] prog
-  in cycleZipWith (\(_, tr) (cont, _) -> _) concreteStates
+  in cycleZipWith (\(_, tr) (cont, _) -> tr cont) concreteStates
 
 cycleZipWith :: (a -> a -> b) -> [a] -> [b]
 cycleZipWith _ [] = []
