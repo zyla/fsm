@@ -57,6 +57,7 @@ v = immediate
 
 repeat :: Int -> (Signal Int -> Seq) -> Seq
 repeat n act = withRegister (v 0) $ \x ->
+  fix $ \loop -> do
   eq <- x ==. v n
   if eq
     then return ()
