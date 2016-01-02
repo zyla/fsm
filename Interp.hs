@@ -33,11 +33,11 @@ stateNames = [ "Init", "Cmd", "Data", "Sync" ]
 dac = M.fromList
   [ 0 .: output (Const 0) 0 (1, (Const 0))
   , 1 .: repeat_upto (Const 3)
-           (\index cont -> Final (Index (NC "cmd") index) cont)
+           (\index self cont -> Final (Index (NC "cmd") index) cont)
            1 -- self
            (2, Const 0) -- cont
   , 2 .: repeat_upto (Const 11)
-           (\index cont -> Final (Index Input index) cont)
+           (\index self cont -> Final (Index Input index) cont)
            2 -- self
            (3, Const 0) -- cont
   , 3 .: Final (Const 0) (1, (Const 0)) -- (Const 0) comes from 1
