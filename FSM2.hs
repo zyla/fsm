@@ -1,4 +1,4 @@
-{-# LANGUAGE ExistentialQuantification, GADTs, UnicodeSyntax #-}
+{-# LANGUAGE ExistentialQuantification, GADTs #-}
 
 type PC = Int
 type RegVal = Int
