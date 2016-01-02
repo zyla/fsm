@@ -33,9 +33,11 @@ goto next = do
 prog = do
   repeat 4 outputCommand
   repeat 12 outputCommand
+  sync
 
 outputCommand = clock
 outputData = clock
+sync = clock
 
 repeat n act = do
   loop <- curState
