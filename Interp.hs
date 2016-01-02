@@ -11,7 +11,7 @@ type PC = Int
 type RegVal = Int
 data Cond = Not Cond | Eq Expr Expr deriving (Show)
 data Expr = Const RegVal | RegVal | Incr Expr deriving (Show)
-data Transition = Next Expr PC | If Cond Transition Transition deriving (Show)
+data Transition = Next Expr Expr PC | If Cond Transition Transition deriving (Show)
 
 type Machine = M.Map PC Transition
 
