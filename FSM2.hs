@@ -22,6 +22,7 @@ data Expr a where
 
   If :: Cond -> Expr a -> Expr a -> Expr a
 
+ppExpr :: Expr a -> String
 ppExpr (Var x) = x
 ppExpr (a `Tuple` b) = "(" ++ ppExpr a ++ "," ++ ppExpr b ++ ")"
 ppExpr (a `Index` i) = ppExpr a ++ "[" ++ ppExpr i ++ "]"
@@ -33,6 +34,7 @@ ppExpr (a `Add` b) = ppExpr a ++ "+" ++ ppExpr b
 ppExpr X = "-"
 ppExpr (If cond a b) = "if " ++ ppCond cond ++ " then " ++ ppExpr a ++ " else " ++ ppExpr b
 
+ppCond :: Cond -> String
 ppCond (Not c) = "~" ++ ppCond c
 ppCond (a `Eq` b) = ppExpr a ++ "=" ++ ppExpr b
 
