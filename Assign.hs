@@ -2,4 +2,4 @@ module Assign where
 
 import Expr
 
-data Assign = 
+data Assign = Ident := AExpr
