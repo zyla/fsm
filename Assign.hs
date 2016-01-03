@@ -12,3 +12,4 @@ instance Show Assign where show = ppAssign
 data Proc = If BExpr Proc | Proc :>> Proc | Assign Assign
 
 ppProc (If cond proc) = "if " ++ ppBExpr cond ++ " then " ++ ppProc proc ++ " end if"
+ppProc (p1 :>> p2) = ppProc p1 ++ "; " ++ ppProc p2
