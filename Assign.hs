@@ -2,6 +2,6 @@ module Assign where
 
 import Expr
 
-data Assign = Ident := AExpr deriving (Show
+infix 1 :=
 
-infixl 1 :=
+data Assign = Ident := AExpr deriving (Show
