@@ -5,5 +5,6 @@ import Expr
 infix 1 :=
 data Assign = Ident := AExpr
 
-instance Show Assign where
-  show (var := val) = var ++ " <= " ++ show val
+ppAssign (var := val) = var ++ " <= " ++ show val
+
+instance Show Assign where show = ppAssign
