@@ -22,6 +22,8 @@ data Expr a where
 
   If :: Cond -> Expr a -> Expr a -> Expr a
 
+ppExpr (Var x) = x
+ppExpr (a `Tuple` b) = "(" ++ ppExpr a ++ "," ++ ppExpr b ++ ")"
 
 instance (Num a, Show a) => Num (Expr a) where
   fromInteger = Const . fromInteger
