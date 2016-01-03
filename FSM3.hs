@@ -24,6 +24,9 @@ ppBExpr (a `Eq` b) = ppAExpr a ++ "=" ++ ppAExpr b
 instance Show AExpr where show = ppAExpr
 instance Show BExpr where show = ppBExpr
 
+instance IsString AExpr where
+  fromString = Var
+
 instance Num AExpr where
   fromInteger = Lit . fromInteger
   (+) = Add
