@@ -19,7 +19,7 @@ ppAExpr (a :! i) = ppAExpr a ++ "[" ++ ppAExpr i ++ "]"
 ppAExpr (a `Add` b) = ppAExpr a ++ "+" ++ ppAExpr b
 
 ppBExpr :: BExpr -> String
-ppBExpr (a `Eq` b) = ppAExpr a ++ "=" ++ ppAExpr b
+ppBExpr (a := b) = ppAExpr a ++ "=" ++ ppAExpr b
 
 instance Show AExpr where show = ppAExpr
 instance Show BExpr where show = ppBExpr
