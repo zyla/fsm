@@ -21,8 +21,8 @@ ppAExpr (a `Add` b) = ppAExpr a ++ "+" ++ ppAExpr b
 ppBExpr :: BExpr -> String
 ppBExpr (a `Eq` b) = ppAExpr a ++ "=" ++ ppAExpr b
 
-instance Show AExpr where
-  show = ppAExpr
+instance Show AExpr where show = ppAExpr
+instance Show BExpr where show = ppBExpr
 
 instance Num AExpr where
   fromInteger = Lit . fromInteger
