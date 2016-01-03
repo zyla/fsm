@@ -73,7 +73,7 @@ compileSwitch :: (Expr RegVal, PC, [(PC, (Expr Output, Cont))]) -> Machine
 compileSwitch (initialRegval, initialPC, ((pc, (output, cont)):xs)) =
   let switch :: Expr a -> Expr a -> Expr a
       switch = If (Eq PC (Const pc))
-      (_, _, output', cont') = compileSwitch initialRegval initialPC xs
+      (_, _, output', cont') = compileSwitch (initialRegval, initialPC, xs)
   in (initialRegval, initialPC, switch output output', switch cont cont')
 
 
