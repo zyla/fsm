@@ -24,6 +24,12 @@ data Expr a where
 
 ppExpr (Var x) = x
 ppExpr (a `Tuple` b) = "(" ++ ppExpr a ++ "," ++ ppExpr b ++ ")"
+ppExpr (a `Index` i) = ppExpr a ++ "[" ++ ppExpr i ++ "]"
+ppExpr (Const x) = show x
+ppExpr Reg = "R"
+ppExpr PC = "PC"
+ppExpr Input = "I"
+ppExpr (a `Add` b) = ppExpr a ++ "+" ++ ppExpr b
 
 instance (Num a, Show a) => Num (Expr a) where
   fromInteger = Const . fromInteger
