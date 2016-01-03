@@ -4,4 +4,4 @@ import Expr
 
 infix 1 :=
 
-data Assign = Ident := AExpr deriving (Show
+data Assign = Ident := AExpr deriving (Show)
