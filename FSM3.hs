@@ -26,7 +26,7 @@ instance Show BExpr where show = ppBExpr
 
 instance Num AExpr where
   fromInteger = Lit . fromInteger
-  (+) = undefined
+  (+) = Add
   (*) = undefined
   abs = undefined
   signum = undefined
