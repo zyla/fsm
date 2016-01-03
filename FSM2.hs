@@ -72,7 +72,7 @@ instantiate (initial, m) = (initial, 0, zip [0..] (m 0 (Tuple 0 initial)))
 compileSwitch :: (Expr RegVal, PC, [(PC, (Expr Output, Cont))]) -> Machine
 compileSwitch (initialRegval, initialPC, (pc, (output, cont)):xs) =
   let switch :: Expr a -> Expr a -> Expr a
-      switch = If (Eq PC (Const pc))
+      switch = case xs of (_:_) -> If (Eq PC (Const pc)); [] -> const
       (_, _, output', cont') = compileSwitch (initialRegval, initialPC, xs)
   in (initialRegval, initialPC, switch output output', switch cont cont')
 
