@@ -8,7 +8,7 @@ data AExpr =
     Var Ident
   | Lit Int
   | Add AExpr AExpr
-  | AExpr .! AExpr
+  | AExpr !! AExpr
 
 data BExpr = Eq AExpr AExpr
 
