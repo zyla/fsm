@@ -10,7 +10,7 @@ data AExpr =
   | Add AExpr AExpr
   | AExpr :! AExpr
 
-data BExpr = AExpr :=: AExpr
+data BExpr = AExpr =: AExpr
 
 ppAExpr :: AExpr -> String
 ppAExpr (Var x) = x
