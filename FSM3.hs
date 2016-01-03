@@ -24,9 +24,8 @@ ppAExpr (a `Add` b) = ppAExpr a ++ "+" ++ ppAExpr b
 ppAExpr X = "-"
 ppAExpr (If cond a b) = "if " ++ ppCond cond ++ " then " ++ ppAExpr a ++ " else " ++ ppAExpr b
 
-ppCond :: Cond -> String
-ppCond (Not c) = "~" ++ ppCond c
-ppCond (a `Eq` b) = ppExpr a ++ "=" ++ ppExpr b
+ppBExpr :: BExpr -> String
+ppBExpr (a `Eq` b) = ppAExpr a ++ "=" ++ ppAExpr b
 
 instance Show (Expr a) where show = ppExpr
 
