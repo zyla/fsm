@@ -5,7 +5,11 @@ import Expr
 infix 2 :=
 infix 1 :>>
 
-data Stmt = If BExpr Stmt | Stmt :>> Stmt | Ident := AExpr
+data Stmt =
+    Stmt :>> Stmt
+  | Ident := AExpr
+  | If BExpr Stmt
+  | Case [(AExpr, Stmt)]
 
 ppStmt (If cond proc) = "if " ++ ppBExpr cond ++ " then " ++ ppStmt proc ++ " end if"
 ppStmt (p1 :>> p2) = ppStmt p1 ++ "; " ++ ppStmt p2
