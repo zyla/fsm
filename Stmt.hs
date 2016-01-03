@@ -18,6 +18,6 @@ ppStmt (var := val) = var ++ " <= " ++ ppAExpr val ++ ";"
 ppStmt (If cond proc) = "if " ++ ppBExpr cond ++ " then " ++ ppStmt proc ++ " end if;"
 ppStmt (Case expr alternatives) = "case " ++ ppAExpr expr ++ " is " ++ concatMap ppAlt alternatives ++ " end case;"
   where
-    ppAlt (val, stmts) = "when " + ppAExpr val ++ " => " 
+    ppAlt (val, st) = "when " + ppAExpr val ++ " => " ++ ppStmt st
 
 instance Show Stmt where show = ppStmt
