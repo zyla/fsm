@@ -1,14 +1,14 @@
-module Assign where
+module Stmt where
 
 import Expr
 
 infix 2 :=
 infix 1 :>>
 
-data Proc = If BExpr Proc | Proc :>> Proc | Ident := AExpr
+data Stmt = If BExpr Stmt | Stmt :>> Stmt | Ident := AExpr
 
-ppProc (If cond proc) = "if " ++ ppBExpr cond ++ " then " ++ ppProc proc ++ " end if"
-ppProc (p1 :>> p2) = ppProc p1 ++ "; " ++ ppProc p2
-ppProc (var := val) = var ++ " <= " ++ ppAExpr val
+ppStmt (If cond proc) = "if " ++ ppBExpr cond ++ " then " ++ ppStmt proc ++ " end if"
+ppStmt (p1 :>> p2) = ppStmt p1 ++ "; " ++ ppStmt p2
+ppStmt (var := val) = var ++ " <= " ++ ppAExpr val
 
-instance Show Proc where show = ppProc
+instance Show Stmt where show = ppStmt
