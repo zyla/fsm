@@ -4,6 +4,8 @@ import Data.String
 
 type Ident = String
 
+data BExpr = Eq AExpr AExpr
+
 data AExpr =
     Var Ident
   | Lit Int
