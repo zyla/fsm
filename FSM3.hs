@@ -23,7 +23,7 @@ ppBExpr (a `Eq` b) = ppAExpr a ++ "=" ++ ppAExpr b
 
 instance Show (Expr a) where show = ppExpr
 
-instance (Num a, Show a) => Num (Expr a) where
+instance Num AExpr where
   fromInteger = Const . fromInteger
   (+) = undefined
   (*) = undefined
