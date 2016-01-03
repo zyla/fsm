@@ -11,7 +11,7 @@ data Stmt =
   | If BExpr Stmt
   | Case AExpr [(AExpr, Stmt)]
 
-(:=>) = 1
+(.=>) = 1
 
 ppStmt (p1 :>> p2) = ppStmt p1 ++ " " ++ ppStmt p2
 ppStmt (var := val) = var ++ " <= " ++ ppAExpr val ++ ";"
