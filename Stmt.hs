@@ -11,9 +11,13 @@ data Stmt =
   | If BExpr Stmt
   | Case AExpr [(AExpr, Stmt)]
 
+(:=>) = 1
+
 ppStmt (p1 :>> p2) = ppStmt p1 ++ " " ++ ppStmt p2
 ppStmt (var := val) = var ++ " <= " ++ ppAExpr val ++ ";"
 ppStmt (If cond proc) = "if " ++ ppBExpr cond ++ " then " ++ ppStmt proc ++ " end if;"
 ppStmt (Case expr alternatives) = "case " ++ ppAExpr expr ++ " is " ++ concatMap ppAlt alternatives ++ " end case;"
+  where
+    ppAlt (val, stmts) = "when " + ppAExpr val ++ " => " 
 
 instance Show Stmt where show = ppStmt
