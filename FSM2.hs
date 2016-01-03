@@ -30,6 +30,8 @@ ppExpr Reg = "R"
 ppExpr PC = "PC"
 ppExpr Input = "I"
 ppExpr (a `Add` b) = ppExpr a ++ "+" ++ ppExpr b
+ppExpr X = "-"
+ppExpr (If cond a b) = "if " ++ ppCond cond ++ " then " ++ ppExpr a ++ " else " ++ ppExpr b
 
 instance (Num a, Show a) => Num (Expr a) where
   fromInteger = Const . fromInteger
