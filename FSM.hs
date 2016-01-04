@@ -68,5 +68,10 @@ compile name portDecls varDecls (initial_assigns, initial_pc, states) = unlines
     , "  variable PC : integer range " ++ show initial_pc ++ " to " ++ show (initial_pc + length states) ++ ";"
     , unlines varDecls
     , "begin"
+    , "process"
+    , " if rising_edge(clk) then"
+    , unlines (compileSwitch states)
+    , " end if;"
+    , "end process;"
     , "end architecture;"
     ]
