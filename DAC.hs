@@ -5,13 +5,6 @@ import Expr
 import Stmt
 import FSM
 
-output :: (AExpr, AExpr, AExpr, AExpr) -> Seq
-output (ldac_n, rst_n, sync_n, sda) = assigns $
-    "ldac_n" := ldac_n
- :| "rst_n" := rst_n
- :| "sync_n" := sync_n
- :| "sda" := sda
-
 dac_port =
   [ "clk: in std_logic;"
   , "dac_scl: out std_logic;"
@@ -27,6 +20,13 @@ dac_vars =
   [ "variable x: integer range 0 to 11;"
   , "constant cmd : std_logic_vector(3 downto 0) := \"0011\";"
   ]
+
+output :: (AExpr, AExpr, AExpr, AExpr) -> Seq
+output (ldac_n, rst_n, sync_n, sda) = assigns $
+    "ldac_n" := ldac_n
+ :| "rst_n" := rst_n
+ :| "sync_n" := sync_n
+ :| "sda" := sda
 
 dac = seqs
   [ output (0,0,0,0)
