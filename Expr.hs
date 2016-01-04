@@ -4,7 +4,7 @@ import Data.String
 
 type Ident = String
 
-infixr 2 :!
+infixr 3 :!
 
 data AExpr =
     Var Ident
