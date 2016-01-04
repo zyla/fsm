@@ -6,8 +6,7 @@ import Stmt
 import FSM
 
 dac_port =
-  [ "clk: in std_logic;"
-  , "dac_scl: out std_logic;"
+  [ "dac_scl: out std_logic;"
   , "dac_sda: out std_logic;"
   , "dac_ldac_n: out std_logic;"
   , "dac_rst_n: out std_logic;"
