@@ -35,3 +35,7 @@ dac = seqs
     , output (0,1,1,0)
     ]
   ]
+
+main =
+  let vhdl = compile "dac" dac_port dac_vars $ instantiate dac
+  in writeFile "/tmp/dac.vhdl" vhdl
