@@ -38,8 +38,8 @@ output out = (X, \self cont -> [(out, cont)])
 
 loop_from_to
   :: Ident -- ^ loop counter
-  -> Expr -- ^ from
-  -> Expr -- ^ to
+  -> AExpr -- ^ from
+  -> AExpr -- ^ to
   -> Seq -- ^ loop body
   -> Seq
 loop_from_to reg from to (Seq bodyInit body) = Seq
