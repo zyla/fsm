@@ -18,10 +18,12 @@ dac_port =
 dac_vars =
   [ "signal x: integer range 0 to 11;"
   , "constant cmd : std_logic_vector(3 downto 0) := \"0011\";"
+  , "signal sda : std_logic"
   ]
 
 dac_assigns =
   [ "dac_scl <= clk;"
+  , "dac_sda <= sda;"
   ]
 
 output :: (AExpr, AExpr, AExpr, AExpr) -> Seq
