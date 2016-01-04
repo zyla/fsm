@@ -13,7 +13,7 @@ dac_port =
   , "dac_rst_n: out std_logic;"
   , "dac_sync_n: out std_logic;"
 
-  , "input: in std_logic_vector(11 downto 0)"
+  , "input: in std_logic_vector(11 downto 0);"
   ]
 
 dac_vars =
