@@ -56,7 +56,7 @@ instantiate (Seq initial code) =
 
 compileSwitch states = Case (Var "PC") $ map (\(pc, stmt) -> (Lit pc, stmt)) states
 
-compile name portDecls varDecls (initial_assigns, initial_pc, states) = unlines
+compile name portDecls varDecls assigns (initial_assigns, initial_pc, states) = unlines
     [ "library ieee;"
     , "use ieee.std_logic_1164.all;"
     , "use ieee.numeric_std.all;"
