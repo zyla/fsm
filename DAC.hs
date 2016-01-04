@@ -23,6 +23,10 @@ dac_port =
   , "input: in std_logic_vector(11 downto 0)"
   ]
 
+dac_vars =
+  [ "variable x: integer range 0 to 11"
+  ]
+
 dac = seqs
   [ output (0,0,0,0)
   , loop_forever $ seqs
