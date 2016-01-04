@@ -69,3 +69,4 @@ compile name portDecls varDecls (initial_assigns, initial_pc, states) = unlines
     , unlines varDecls
     , "begin"
     , "end architecture;"
+    ]
