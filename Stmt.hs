@@ -3,7 +3,7 @@ module Stmt where
 import Expr
 
 infix 2 :=
-infix 1 :|
+infixl 1 :|
 
 data Stmt =
     Stmt :| Stmt -- parallel composition
