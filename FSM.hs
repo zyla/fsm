@@ -54,7 +54,7 @@ instantiate (Seq initial code) =
   in (initial, start_pc, zip [start_pc..] $ code start_pc (initial :| _PC := Lit start_pc))
 
 
-compile name decls (initial_assigns, initial_pc, states) = unlines
+compile name portDecls varDecls (initial_assigns, initial_pc, states) = unlines
     [ "library ieee;"
     , "use ieee.std_logic_1164.all;"
     , "use ieee.numeric_std.all;"
