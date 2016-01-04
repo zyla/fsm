@@ -4,6 +4,7 @@ import Expr
 import Stmt
 import FSM
 
+output :: (AExpr, AExpr, AExpr, AExpr) -> Seq
 output (ldac_n, rst_n, sync_n, sda) = assigns $
     "ldac_n" := ldac_n
  :| "rst_n" := rst_n
