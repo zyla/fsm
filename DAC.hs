@@ -24,7 +24,7 @@ dac_port =
   ]
 
 dac_vars =
-  [ "variable x: integer range 0 to 11"
+  [ "variable x: integer range 0 to 11;"
   ]
 
 dac = seqs
