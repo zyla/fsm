@@ -69,14 +69,6 @@ loop_forever (initial, trans) = (initial, \self cont -> trans self (Tuple (Const
 instantiate :: Seq -> (Expr RegVal, PC, [(PC, (Expr Output, Cont))])
 instantiate (initial, m) = (initial, 0, zip [0..] (m 0 (Tuple 0 initial)))
 
-compileSwitch :: (Expr RegVal, PC, [(PC, (Expr Output, Cont))]) -> Machine
-compileSwitch (initialRegval, initialPC, (pc, (output, cont)):xs) =
-  let switch :: Expr a -> Expr a -> Expr a
-      switch = case xs of (_:_) -> If (Eq PC (Const pc)); [] -> const
-      (_, _, output', cont') = compileSwitch (initialRegval, initialPC, xs)
-  in (initialRegval, initialPC, switch output output', switch cont cont')
-
-
 output :: Expr Output -> Seq
 output out = (X, \self cont -> [(out, cont)])
 
@@ -89,6 +81,14 @@ loop_from_to from to actF =
          (Const self `Tuple` Add Reg 1)
        )
      )
+
+compileSwitch :: (Expr RegVal, PC, [(PC, (Expr Output, Cont))]) -> Machine
+compileSwitch (initialRegval, initialPC, (pc, (output, cont)):xs) =
+  let switch :: Expr a -> Expr a -> Expr a
+      switch = case xs of (_:_) -> If (Eq PC (Const pc)); [] -> const
+      (_, _, output', cont') = compileSwitch (initialRegval, initialPC, xs)
+  in (initialRegval, initialPC, switch output output', switch cont cont')
+
 
 dac = seqs
   [ output 0
