@@ -8,7 +8,7 @@ infix 1 :|
 data Stmt =
     Stmt :| Stmt -- parallel composition
   | Ident := AExpr -- assignment
-  | If BExpr Stmt
+  | If BExpr Stmt Stmt
   | Case AExpr [(AExpr, Stmt)]
   | Nop
 
