@@ -48,7 +48,24 @@ assigns ass = Seq Nop $ \self cont -> [ass :| cont]
 
 -- Compilation
 
-instantiate :: Seq -> (Stmt, [(PC, Stmt)])
+instantiate :: Seq -> (Stmt, PC, [(PC, Stmt)])
 instantiate (Seq initial code) =
   let start_pc = 0
-  in (initial :| _PC := Lit start_pc, zip [start_pc..] $ code start_pc (initial :| _PC := Lit start_pc))
+  in (initial, start_pc, zip [start_pc..] $ code start_pc (initial :| _PC := Lit start_pc))
+
+
+compile decls (initial_assigns, initial_pc, states) = unlines
+  [ "library ieee;"
+  , "use ieee.std_logic_1164.all;"
+  , "use ieee.numeric_std.all;"
+  , ""
+  , ppEntity name ent
+  , ppArchitecture name arch
+  ]
+
+ppEntity name (Entity ifSigs) = unlines
+    [ "entity " ++ name ++ " is"
+    , "  port ("
+    , "    " ++ intercalate ";\n    " (map ppIfaceSignal ifSigs)
+    , "  );"
+    , "end entity;"
