@@ -26,19 +26,19 @@ dac_assigns =
   , "dac_sda <= sda;"
   ]
 
-output :: (AExpr, AExpr, AExpr, AExpr) -> Seq
+output :: (Bit, Bit, Bit, AExpr) -> Seq
 output (ldac_n, rst_n, sync_n, sda) = assigns $
-    "ldac_n" := ldac_n
- :| "rst_n" := rst_n
- :| "sync_n" := sync_n
+    "ldac_n" := LogicLit ldac_n
+ :| "rst_n" := LogicLit rst_n
+ :| "sync_n" := LogicLit sync_n
  :| "sda" := sda
 
 dac = seqs
-  [ output (0,0,0,0)
+  [ output (B0,B0,B0,B0)
   , loop_forever $ seqs
-    [ loop_from_to "x" 0 3 $ output (0,1,0,"cmd" :! "x")
-    , loop_from_to "x" 0 11 $ output (0,1,0,"input" :! "x")
-    , output (0,1,1,0)
+    [ loop_from_to "x" 0 3 $ output (B0,B1,B0,"cmd" :! "x")
+    , loop_from_to "x" 0 11 $ output (B0,B1,B0,"input" :! "x")
+    , output (B0,B1,B1,B0)
     ]
   ]
 
