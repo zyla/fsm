@@ -14,6 +14,8 @@ data Stmt =
 
 (.=>) = (,)
 
+ppStmt (Nop :| p) = ppStmt p
+ppStmt (p :| Nop) = ppStmt p
 ppStmt (p1 :| p2) = ppStmt p1 ++ " " ++ ppStmt p2
 ppStmt (var := val) = var ++ " <= " ++ ppAExpr val ++ ";"
 ppStmt (If cond iftrue iffalse) = "if " ++ ppBExpr cond ++ " then " ++ ppStmt iftrue ++ " else " ++ ppStmt iffalse ++ " end if;"
