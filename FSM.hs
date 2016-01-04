@@ -63,7 +63,7 @@ compile name portDecls varDecls (initial_assigns, initial_pc, states) = unlines
     , ""
     , "entity " ++ name ++ " is"
     , "  port ("
-    , "  clk : in std_logic;"
+    , "  clk: in std_logic;"
     , unlines portDecls
     , "  );"
     , "end entity;"
