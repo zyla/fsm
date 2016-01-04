@@ -72,6 +72,7 @@ compile name portDecls varDecls assigns (initial_assigns, initial_pc, states) = 
         " := " ++ show initial_pc ++ ";"
     , unlines varDecls
     , "begin"
+    , unlines assigns
     , "process(clk)"
     , " begin"
     , " if rising_edge(clk) then"
