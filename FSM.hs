@@ -22,4 +22,5 @@ Seq init1 code1 .>> Seq init2 code2 = Seq
      in code1' ++ code2 self2 cont2
   }
 
+seqs :: [Seq] -> Seq
 seqs = foldr1 (.>>)
