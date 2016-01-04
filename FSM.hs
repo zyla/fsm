@@ -54,17 +54,12 @@ instantiate (Seq initial code) =
   in (initial, start_pc, zip [start_pc..] $ code start_pc (initial :| _PC := Lit start_pc))
 
 
-compile decls (initial_assigns, initial_pc, states) = unlines
-  [ "library ieee;"
-  , "use ieee.std_logic_1164.all;"
-  , "use ieee.numeric_std.all;"
-  , ""
-  , ppEntity name ent
-  , ppArchitecture name arch
-  ]
-
-ppEntity name (Entity ifSigs) = unlines
-    [ "entity " ++ name ++ " is"
+compile name decls (initial_assigns, initial_pc, states) = unlines
+    [ "library ieee;"
+    , "use ieee.std_logic_1164.all;"
+    , "use ieee.numeric_std.all;"
+    , ""
+    , "entity " ++ name ++ " is"
     , "  port ("
     , "    " ++ intercalate ";\n    " (map ppIfaceSignal ifSigs)
     , "  );"
