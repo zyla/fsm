@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module FSM where
 
+import Expr
 import Stmt
 
 type PC = Int
