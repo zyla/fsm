@@ -64,3 +64,8 @@ compile name portDecls varDecls (initial_assigns, initial_pc, states) = unlines
     , unlines portDecls
     , "  );"
     , "end entity;"
+    , "architecture " ++ name ++ "_arch is"
+    , "  variable PC : integer range " ++ show initial_pc ++ " to " ++ show (initial_pc + length states)
+    , unlines varDecls
+    , "begin"
+    , "end architecture;"
