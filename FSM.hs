@@ -16,4 +16,5 @@ Seq init1 code1 :>> Seq init2 code2 = Seq
   { seqInit = init1
   , seqCode = \self1 cont2 ->
      let cont1 = init2 :| _PC := self2
-     code1 self
+         self2 = self1 + length code1'
+         code1' = code1 self1
