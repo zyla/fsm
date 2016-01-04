@@ -33,9 +33,6 @@ instantiate (Seq initial code) =
   let start_pc = 0
   in (initial, start_pc, zip [start_pc..] $ code start_pc (initial :| _PC := Lit start_pc))
 
-output :: Expr Output -> Seq
-output out = (X, \self cont -> [(out, cont)])
-
 loop_from_to
   :: Ident -- ^ loop counter
   -> AExpr -- ^ from
@@ -50,3 +47,6 @@ loop_from_to reg from to (Seq bodyInit body) = Seq
          (reg := Var reg + 1 :| _PC := Lit self)
        )
   }
+
+output :: Stmt -> Seq
+output assigns = Seq Nop $ \self cont -> [assigns :| cont])
