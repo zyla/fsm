@@ -34,11 +34,11 @@ output (ldac_n, rst_n, sync_n, sda) = assigns $
  :| "sda" := sda
 
 dac = seqs
-  [ output (B0,B0,B0,B0)
+  [ output (B0,B0,B0,LogicLit B0)
   , loop_forever $ seqs
     [ loop_from_to "x" 0 3 $ output (B0,B1,B0,"cmd" :! "x")
     , loop_from_to "x" 0 11 $ output (B0,B1,B0,"input" :! "x")
-    , output (B0,B1,B1,B0)
+    , output (B0,B1,B1,LogicLit B0)
     ]
   ]
 
