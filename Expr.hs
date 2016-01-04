@@ -20,6 +20,8 @@ data BExpr = AExpr :=: AExpr
 ppAExpr :: AExpr -> String
 ppAExpr (Var x) = x
 ppAExpr (Lit x) = show x
+ppAExpr (LogicLit B0) = "'0'"
+ppAExpr (LogicLit B1) = "'1'"
 ppAExpr (a :! i) = ppAExpr a ++ "(" ++ ppAExpr i ++ ")"
 ppAExpr (a `Add` b) = ppAExpr a ++ "+" ++ ppAExpr b
 
