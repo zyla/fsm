@@ -10,6 +10,7 @@ data Stmt =
   | Ident := AExpr -- assignment
   | If BExpr Stmt
   | Case AExpr [(AExpr, Stmt)]
+  | Nop
 
 (.=>) = (,)
 
@@ -19,5 +20,6 @@ ppStmt (If cond proc) = "if " ++ ppBExpr cond ++ " then " ++ ppStmt proc ++ " en
 ppStmt (Case expr alternatives) = "case " ++ ppAExpr expr ++ " is " ++ concatMap ppAlt alternatives ++ " end case;"
   where
     ppAlt (val, st) = "when " ++ ppAExpr val ++ " => " ++ ppStmt st
+ppStmt Nop = ";"
 
 instance Show Stmt where show = ppStmt
