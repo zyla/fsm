@@ -61,6 +61,6 @@ compile name portDecls varDecls (initial_assigns, initial_pc, states) = unlines
     , ""
     , "entity " ++ name ++ " is"
     , "  port ("
-    , "    " ++ intercalate ";\n    " (map ppIfaceSignal ifSigs)
+    , unlines portDecls
     , "  );"
     , "end entity;"
