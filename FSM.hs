@@ -42,11 +42,11 @@ loop_from_to
   -> Expr -- ^ to
   -> Seq -- ^ loop body
   -> Seq
-loop_from_to from to actF =
-  let (_, act) = actF Reg
-  in (from, \self cont -> act self
+loop_from_to reg from to (Seq bodyInit body) = Seq
+  { seqInit = bodyInit :| reg := from,
+  , seqCode = \self cont -> body self
        (If (Reg `Eq` to)
          cont
          (
        )
-     )
+  }
