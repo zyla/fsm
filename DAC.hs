@@ -16,7 +16,7 @@ dac_port =
   ]
 
 dac_vars =
-  [ "variable x: integer range 0 to 11;"
+  [ "signal x: integer range 0 to 11;"
   , "constant cmd : std_logic_vector(3 downto 0) := \"0011\";"
   ]
 
