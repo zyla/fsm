@@ -4,13 +4,13 @@ import Data.String
 
 type Ident = String
 
+infixr 2 :!
+
 data AExpr =
     Var Ident
   | Lit Int
   | Add AExpr AExpr
   | AExpr :! AExpr
-
-infixr 2 :!
 
 data BExpr = AExpr :=: AExpr
 
