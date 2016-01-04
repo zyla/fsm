@@ -36,12 +36,17 @@ instantiate (Seq initial code) =
 output :: Expr Output -> Seq
 output out = (X, \self cont -> [(out, cont)])
 
-loop_from_to :: Expr RegVal -> Expr RegVal -> (Expr RegVal -> Seq) -> Seq
+loop_from_to
+  :: Ident -- ^ loop counter
+  -> Expr -- ^ from
+  -> Expr -- ^ to
+  -> Seq -- ^ loop body
+  -> Seq
 loop_from_to from to actF =
   let (_, act) = actF Reg
   in (from, \self cont -> act self
        (If (Reg `Eq` to)
          cont
-         (Const self `Tuple` Add Reg 1)
+         (
        )
      )
