@@ -21,3 +21,5 @@ Seq init1 code1 .>> Seq init2 code2 = Seq
          code1' = code1 self1 cont1
      in code1' ++ code2 self2 cont2
   }
+
+seqs = foldr1 (.>>)
