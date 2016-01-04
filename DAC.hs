@@ -15,6 +15,6 @@ dac = seqs
   , loop_forever $ seqs
     [ loop_from_to 0 3 $ \index -> output ("cmd" :! index)
     , loop_from_to 0 11 $ \index -> output ("input" :! index)
-    , output 17
+    , output _
     ]
   ]
