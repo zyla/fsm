@@ -48,5 +48,5 @@ loop_from_to reg from to (Seq bodyInit body) = Seq
        )
   }
 
-output :: Stmt -> Seq
-output assigns = Seq Nop $ \self cont -> [assigns :| cont]
+assigns :: Stmt -> Seq
+assigns ass = Seq Nop $ \self cont -> [ass :| cont]
