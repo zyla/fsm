@@ -17,13 +17,19 @@ dac_port =
 
 dac_vars =
   [ "signal x: integer range 0 to 11;"
-  , "constant cmd : std_logic_vector(3 downto 0) := \"0011\";"
-  , "signal sda : std_logic;"
+  , "constant cmd: std_logic_vector(3 downto 0) := \"0011\";"
+  , "signal sda: std_logic;"
+  , "signal ldac_n: std_logic;"
+  , "signal rst_n: std_logic;"
+  , "signal sync_n: std_logic;"
   ]
 
 dac_assigns =
   [ "dac_scl <= clk;"
   , "dac_sda <= sda;"
+  , "dac_ldac_n <= ldac_n;"
+  , "dac_rst_n <= rst_n;"
+  , "dac_sync_n <= sync_n;"
   ]
 
 output :: (Bit, Bit, Bit, AExpr) -> Seq
