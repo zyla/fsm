@@ -8,6 +8,7 @@ type Cont = Stmt
 
 data Seq = Seq { seqInit :: Stmt, seqCode :: PC -> Cont -> [Stmt] }
 
+_PC :: AExpr
 _PC = "PC"
 
 -- sequential composition
