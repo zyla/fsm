@@ -51,4 +51,4 @@ assigns ass = Seq Nop $ \self cont -> [ass :| cont]
 instantiate :: Seq -> (Stmt, [(PC, Stmt)])
 instantiate (Seq initial code) =
   let start_pc = 0
-  in (initial, start_pc, zip [start_pc..] $ code start_pc (initial :| _PC := Lit start_pc))
+  in (initial :| _PC := Lit start_pc, zip [start_pc..] $ code start_pc (initial :| _PC := Lit start_pc))
