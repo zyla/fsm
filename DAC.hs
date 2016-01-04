@@ -4,7 +4,7 @@ import Expr
 import Stmt
 import FSM
 
-output (ldac_n, rst_n, sync_n, sda) =
+output (ldac_n, rst_n, sync_n, sda) = assigns $
     "ldac_n" := ldac_n
  :| "rst_n" := rst_n
  :| "sync_n" := sync_n
