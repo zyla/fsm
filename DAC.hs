@@ -18,7 +18,7 @@ dac_port =
   , "dac_sda: out std_logic;"
   , "dac_ldac_n: out std_logic;"
   , "dac_rst_n: out std_logic;"
-  , "dac_sync_n: out std_logic"
+  , "dac_sync_n: out std_logic;"
   ]
 
 dac = seqs
