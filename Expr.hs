@@ -6,9 +6,12 @@ type Ident = String
 
 infixr 3 :!
 
+data Bit = B0 | B1
+
 data AExpr =
     Var Ident
   | Lit Int
+  | LogicLit Bit
   | Add AExpr AExpr
   | AExpr :! AExpr
 
