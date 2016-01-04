@@ -45,7 +45,7 @@ loop_from_to
 loop_from_to reg from to (Seq bodyInit body) = Seq
   { seqInit = bodyInit :| reg := from,
   , seqCode = \self cont -> body self
-       (If (Reg `Eq` to)
+       (If (Var reg :=: to)
          cont
          (
        )
