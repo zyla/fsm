@@ -72,7 +72,7 @@ compile name portDecls varDecls (initial_assigns, initial_pc, states) = unlines
     , "begin"
     , "process"
     , " if rising_edge(clk) then"
-    , pprStmt $ compileSwitch states
+    , ppStmt $ compileSwitch states
     , " end if;"
     , "end process;"
     , "end architecture;"
