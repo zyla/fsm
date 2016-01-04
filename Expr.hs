@@ -10,6 +10,8 @@ data AExpr =
   | Add AExpr AExpr
   | AExpr :! AExpr
 
+infixr 2 :!
+
 data BExpr = AExpr :=: AExpr
 
 ppAExpr :: AExpr -> String
