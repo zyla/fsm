@@ -12,6 +12,10 @@ output (ldac_n, rst_n, sync_n, sda) = assigns $
  :| "sync_n" := sync_n
  :| "sda" := sda
 
+dac_port =
+  [ ""
+  ]
+
 dac = seqs
   [ output (0,0,0,0)
   , loop_forever $ seqs
