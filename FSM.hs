@@ -43,10 +43,10 @@ loop_from_to
   -> Seq -- ^ loop body
   -> Seq
 loop_from_to reg from to (Seq bodyInit body) = Seq
-  { seqInit = bodyInit :| reg := from,
+  { seqInit = bodyInit :| reg := from
   , seqCode = \self cont -> body self
        (If (Var reg :=: to)
          cont
-         (
+         (reg := Var reg + 1 :| _PC := Lit self)
        )
   }
