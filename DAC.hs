@@ -20,6 +20,10 @@ dac_vars =
   , "constant cmd : std_logic_vector(3 downto 0) := \"0011\";"
   ]
 
+dac_assigns =
+  [ "dac_scl <= clk;"
+  ]
+
 output :: (AExpr, AExpr, AExpr, AExpr) -> Seq
 output (ldac_n, rst_n, sync_n, sda) = assigns $
     "ldac_n" := ldac_n
