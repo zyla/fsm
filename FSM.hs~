@@ -28,6 +28,11 @@ seqs = foldr1 (.>>)
 loop_forever :: Seq -> Seq
 loop_forever (Seq initial code) = Seq initial $ \self cont -> code self (initial :| _PC := Lit self)
 
+instantiate :: Seq -> (Stmt, PC, [(PC, Stmt)])
+instantiate (Seq initial code) =
+  let start_pc = 0
+  in (initial, start_pc, zip [start_pc..] $ code start_pc (initial :| _PC := Lit start_pc))
+
 loop_from_to
   :: Ident -- ^ loop counter
   -> AExpr -- ^ from
@@ -45,10 +50,3 @@ loop_from_to reg from to (Seq bodyInit body) = Seq
 
 assigns :: Stmt -> Seq
 assigns ass = Seq Nop $ \self cont -> [ass :| cont]
-
--- Compilation
-
-instantiate :: Seq -> (Stmt, PC, [(PC, Stmt)])
-instantiate (Seq initial code) =
-  let start_pc = 0
-  in (initial, start_pc, zip [start_pc..] $ code start_pc (initial :| _PC := Lit start_pc))
